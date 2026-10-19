@@ -17,14 +17,14 @@ Macの認証はデスクトップ用OAuthクライアント、PKCE、state照合
 
 ## Instagramリール
 
-本人指定のURLは https://www.instagram.com/mocochan85/ 。本人ログイン後のプロフェッショナルダッシュボードを確認し、Professionalであることは確認済みです。Creator/Businessの内訳とAPI同意・ID照合は未確認です。Metaのメール確認後の人間確認画面で認証欄が表示されず停止しています（2026-10-19の画面観測。原因は未確定）。
+本人指定のURLは https://www.instagram.com/mocochan85/ 。本人ログイン後のプロフェッショナルダッシュボードを確認し、Professionalであることは確認済みです。Creator/Businessの内訳とAPI同意・ID照合は未確認です。Meta本人確認後、開発者アプリ画面へのアクセス復旧を確認しました。専用アプリを本人が作成し、読取2権限追加・テスター招待の本人承認まで完了しました。APIログイン・同意中です（2026-10-19の画面観測）。
 Instagram API with Instagram LoginはProfessionalアカウント向けで、Facebook Pageの接続を必須にしない経路です。基本・公開権限は `instagram_business_basic` と `instagram_business_content_publish`。Facebook Login用の権限と混ぜません。[Meta公式Instagram Loginコレクション](https://www.postman.com/meta/instagram/folder/6raa77c/instagram-api-with-instagram-login)
 
 リール公開にはメディアコンテナ作成、処理状態確認、`media_publish`、返されたmedia IDの再取得を組み合わせます。Meta公式コレクションはFacebook Login経路の公開例も提供しています。経路ごとにホスト・トークン・権限が異なるため、例をそのまま別経路へ流用しません。[Meta公式リール公開例](https://www.postman.com/meta/instagram/request/gabnx7r/publish-reel)
 
-分析にはInstagram Insightsを利用します。利用可能指標・権限の組み合わせ・Graph API版はMeta Developer画面で最終確認が必要です。developerサイトの一部URLはこの調査で429またはページ削除表示となり、最新版のInsights権限を一次資料で確定できませんでした。未確認の権限名を断定せず、実トークンで検証します。初期クライアントは未設定のAPI版を拒否し、未対応の指標はnullで残します。
+分析にはInstagram Insightsを利用します。利用可能指標・権限の組み合わせ・Graph API版はMeta Developer画面で最終確認が必要です。developerサイトの一部URLはこの調査で429またはページ削除表示となり、調査時にはInsights権限を文書で確定できませんでした。その後、本人ログイン済みのMeta公式「アクセス許可と機能」画面で、Instagram Login用の `instagram_business_manage_insights` と `instagram_business_basic` の名称・用途を確認しました。この2権限は本人承認後に専用アプリへ追加済みです。実トークンの付与・動作確認は未実施です。初期クライアントは未設定のAPI版を拒否し、未対応の指標はnullで残します。
 
-本人操作：Metaの人間確認、Metaアプリ・Instagram Login設定、OAuth同意、必要に応じたApp Review/アクセスレベル確認。Metaの同意フローと期限更新の自動化は未実装です。
+本人操作：Instagram本人ログインと読み取りOAuth同意、必要に応じたApp Review/アクセスレベル確認。Metaの同意フローと期限更新の自動化は未実装です。
 
 ## Threads
 

@@ -126,15 +126,41 @@
   },
   "existing_public_posts_imported": 3,
   "meta_connection": {
-    "status": "human_verification_widget_not_displayed",
+    "status": "instagram_read_oauth_owner_login_pending",
     "instagram_owner_login_verified": true,
     "professional_dashboard_visible": true,
     "email_verification_owner_reported_complete": true,
-    "next_button_enabled": false,
-    "reload_attempts": 1,
-    "cause_confirmed": false,
+    "human_verification_owner_reported_complete": true,
+    "observed_heading": "Instagram login",
+    "observed_at": "2026-10-19T11:31:30.301914+00:00",
+    "developer_apps_access_verified": true,
     "api_authentication_complete": false,
     "instagram_account_id": null,
-    "threads_account_id": null
+    "threads_account_id": null,
+    "existing_anna_app_permissions_changed": false,
+    "existing_anna_credentials_changed": false,
+    "new_app": {
+      "proposed_name": "Moco SNS Automation",
+      "selected_business_portfolio": "もこちゃん",
+      "business_verified": false,
+      "created": true,
+      "app_id": "1150847227441767",
+      "owner_creation_confirmation_pending": false,
+      "instagram_client_id": "2011482642896301",
+      "owner_creation_confirmed": true
+    },
+    "read_permission_names_verified_in_official_ui": [
+      "instagram_business_basic",
+      "instagram_business_manage_insights"
+    ],
+    "read_permissions_added": true,
+    "read_permissions_owner_approved": true,
+    "instagram_tester_invitation_accepted_by_owner": true,
+    "token_saved_by_this_setup": false,
+    "requested_auth_scopes": [
+      "instagram_business_basic",
+      "instagram_business_manage_insights"
+    ],
+    "default_generator_scopes_were_reduced": true
   }
 }

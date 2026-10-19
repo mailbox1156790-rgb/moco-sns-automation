@@ -15,7 +15,7 @@
 
 |媒体|投稿先|確認状況|
 |---|---|---|
-|Instagram|https://www.instagram.com/mocochan85/|本人ログイン・Professional確認済み。Meta本人確認画面で停止、API未接続|
+|Instagram|https://www.instagram.com/mocochan85/|本人ログイン・Professional確認済み。Meta本人確認済み、専用アプリ作成・読取2権限追加・本人のテスター承認済み。API認証中|
 |Threads|https://www.threads.com/@mocochan85|本人からURL受領。API権限未確認|
 |YouTube Shorts|https://www.youtube.com/@MOCOchannel/shorts|本人所有・OAuthチャンネルID照合済み。既存Shorts 3本の実測取得済み|
 
