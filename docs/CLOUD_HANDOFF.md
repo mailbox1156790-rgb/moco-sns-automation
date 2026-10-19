@@ -1,5 +1,9 @@
 # クラウド側Codexへの引き継ぎ
 
+## 最新の本人指示
+
+[まずThreadsから運用する（2026-10-19）](instructions/2026-10-19-threads-first.md) を優先してください。動画は環境準備までで一旦保留し、Threadsの接続状況確認と、もこの背景を反映した投稿案3件を本人確認待ちにします。公開・予約の承認ではありません。
+
 専用リポジトリ：`mailbox1156790-rgb/moco-sns-automation`。更新日：2026-10-19 JST。
 最初に `AGENTS.md`、`docs/reports/2026-10-19-initial.md`、`docs/API_RESEARCH.md` を読んでください。秘密値をチャットで求める必要はありません。
 
