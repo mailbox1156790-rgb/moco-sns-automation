@@ -1,0 +1,25 @@
+{
+  "topic": "AIに渡す、3つのメモ",
+  "title": "AIに渡す、3つのメモ",
+  "planning": {
+    "goal": "もこの発信方針に合うThreads文章案を本人が選び、表現を確認する",
+    "status": "本人確認待ち",
+    "source_urls": [
+      "https://github.com/mailbox1156790-rgb/moco-sns-automation/blob/99571ac/docs/instructions/2026-10-19-threads-first.md"
+    ],
+    "claims_verified": false
+  },
+  "script": [
+    "SNSの投稿、毎回ゼロから考えなくていい。\nAIに渡すのは、この3つ。\n\n・誰に届けたいか\n・何を1つ伝えたいか\n・どんな口調で話したいか\n\n出てきた文章を、そのまま出す必要はなくて。\n普段の自分が言わない言葉を直してみる。\n\nまずは下書きを1つ作るところから。"
+  ],
+  "slides": [
+    "AIに渡す、3つのメモ"
+  ],
+  "caption": "SNSの投稿、毎回ゼロから考えなくていい。\nAIに渡すのは、この3つ。\n\n・誰に届けたいか\n・何を1つ伝えたいか\n・どんな口調で話したいか\n\n出てきた文章を、そのまま出す必要はなくて。\n普段の自分が言わない言葉を直してみる。\n\nまずは下書きを1つ作るところから。",
+  "disclosure": "一般的な文章作成の提案。特定のAIの機能・成果を保証せず、本人の利用実績とも述べていない。",
+  "checks": {
+    "owner_reviewed": false,
+    "facts_checked": false,
+    "rights_checked": false
+  }
+}

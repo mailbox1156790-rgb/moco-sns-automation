@@ -1,0 +1,25 @@
+{
+  "topic": "どんな毎日を過ごしたい？",
+  "title": "どんな毎日を過ごしたい？",
+  "planning": {
+    "goal": "もこの発信方針に合うThreads文章案を本人が選び、表現を確認する",
+    "status": "本人確認待ち",
+    "source_urls": [
+      "https://github.com/mailbox1156790-rgb/moco-sns-automation/blob/99571ac/docs/instructions/2026-10-19-threads-first.md"
+    ],
+    "claims_verified": false
+  },
+  "script": [
+    "前は調理師をしていて、毎日が嫌になって独立した。\nネットの仕事をしながら、海外を転々と暮らしていた。\n\n「どれだけ頑張れるか」より、\n「どんな毎日を過ごしたいか」。\n\nそんな視点で、働き方を考えるのもありだと思う。\n今のあなたは、どんな毎日を過ごしたい？"
+  ],
+  "slides": [
+    "どんな毎日を過ごしたい？"
+  ],
+  "caption": "前は調理師をしていて、毎日が嫌になって独立した。\nネットの仕事をしながら、海外を転々と暮らしていた。\n\n「どれだけ頑張れるか」より、\n「どんな毎日を過ごしたいか」。\n\nそんな視点で、働き方を考えるのもありだと思う。\n今のあなたは、どんな毎日を過ごしたい？",
+  "disclosure": "経歴はGitHub方針文書の本人提供記載に基づく。後半の価値観・語り方は本人確認待ち。",
+  "checks": {
+    "owner_reviewed": false,
+    "facts_checked": false,
+    "rights_checked": false
+  }
+}

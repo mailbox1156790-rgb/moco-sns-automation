@@ -4,6 +4,7 @@
 現在の対象は **Threadsの文章投稿のみ**。動画制作とInstagram/YouTube投稿は休止しています。
 Threads公開処理は実装・模擬検証済みですが、投稿権限の追加と初回の本人確認がまだのため無効です。
 
+- [確認待ちのThreads投稿案3件](docs/reports/2026-10-19-threads-candidates.md)
 - [現在のThreads専用運用](docs/reports/2026-10-19-threads-only.md)
 - [初期調査・実装報告](docs/reports/2026-10-19-initial.md)
 - [クラウド側Codexへの引き継ぎ](docs/CLOUD_HANDOFF.md)

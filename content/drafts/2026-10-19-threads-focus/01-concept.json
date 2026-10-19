@@ -1,0 +1,25 @@
+{
+  "topic": "頑張らない、の考え方",
+  "title": "頑張らない、の考え方",
+  "planning": {
+    "goal": "もこの発信方針に合うThreads文章案を本人が選び、表現を確認する",
+    "status": "本人確認待ち",
+    "source_urls": [
+      "https://github.com/mailbox1156790-rgb/moco-sns-automation/blob/99571ac/docs/instructions/2026-10-19-threads-first.md"
+    ],
+    "claims_verified": false
+  },
+  "script": [
+    "頑張らないで稼ぐって、何もしないことだとは思っていなくて。\n\nずっと自分に無理をさせる働き方を、少しずつ手放したい。\nAIや自動化も、そのための選択肢のひとつ。\n\nもっと頑張る前に、\n「これ、私が毎回やる必要ある？」\nって考えてみるのもいいと思う。"
+  ],
+  "slides": [
+    "頑張らない、の考え方"
+  ],
+  "caption": "頑張らないで稼ぐって、何もしないことだとは思っていなくて。\n\nずっと自分に無理をさせる働き方を、少しずつ手放したい。\nAIや自動化も、そのための選択肢のひとつ。\n\nもっと頑張る前に、\n「これ、私が毎回やる必要ある？」\nって考えてみるのもいいと思う。",
+  "disclosure": "「頑張らない」の意味は表現案で、本人確認済みの定義ではない。",
+  "checks": {
+    "owner_reviewed": false,
+    "facts_checked": false,
+    "rights_checked": false
+  }
+}

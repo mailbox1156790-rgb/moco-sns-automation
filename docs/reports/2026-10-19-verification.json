@@ -396,11 +396,58 @@
     "existing_read_helper_preserved": true,
     "read_identity_reverified_after_helper_separation": true
   },
-  "current_threads_draft": {
+  "previous_threads_draft": {
     "id": "moco-5ab9604cc71245a4",
     "format": "text_only",
     "characters": 170,
     "review_digest": "04e4ef3e2cda1c92ab8e3e89b9d08374d0ac999c7dcdf1c098df8b154b4e6808",
     "public": false
+  },
+  "threads_draft_candidates": {
+    "brief_reference": "https://github.com/mailbox1156790-rgb/moco-sns-automation/blob/99571ac/docs/instructions/2026-10-19-threads-first.md",
+    "status": "awaiting_owner_review",
+    "new_sns_posts_created": 0,
+    "drafts": [
+      {
+        "id": "moco-d96ad616e91a434c",
+        "slug": "01-concept",
+        "title": "頑張らない、の考え方",
+        "caption": "頑張らないで稼ぐって、何もしないことだとは思っていなくて。\n\nずっと自分に無理をさせる働き方を、少しずつ手放したい。\nAIや自動化も、そのための選択肢のひとつ。\n\nもっと頑張る前に、\n「これ、私が毎回やる必要ある？」\nって考えてみるのもいいと思う。",
+        "review_note": "「頑張らない」の意味は表現案で、本人確認済みの定義ではない。",
+        "characters": 124,
+        "review_digest": "6fd8f36f4c3c07dee79bc94f50ff2a5caa622ce19aa8fbe3c598b892810ac24e",
+        "state": "awaiting_review",
+        "remote_id": null,
+        "remote_url": null,
+        "scheduled_at": null
+      },
+      {
+        "id": "moco-cc151bc2291b41fa",
+        "slug": "02-story",
+        "title": "どんな毎日を過ごしたい？",
+        "caption": "前は調理師をしていて、毎日が嫌になって独立した。\nネットの仕事をしながら、海外を転々と暮らしていた。\n\n「どれだけ頑張れるか」より、\n「どんな毎日を過ごしたいか」。\n\nそんな視点で、働き方を考えるのもありだと思う。\n今のあなたは、どんな毎日を過ごしたい？",
+        "review_note": "経歴はGitHub方針文書の本人提供記載に基づく。後半の価値観・語り方は本人確認待ち。",
+        "characters": 127,
+        "review_digest": "29923d03086b58cf41018c930ee82898a932ecd2cf20d25553948ec3d7a98578",
+        "state": "awaiting_review",
+        "remote_id": null,
+        "remote_url": null,
+        "scheduled_at": null
+      },
+      {
+        "id": "moco-be3475605b30446e",
+        "slug": "03-ai-tip",
+        "title": "AIに渡す、3つのメモ",
+        "caption": "SNSの投稿、毎回ゼロから考えなくていい。\nAIに渡すのは、この3つ。\n\n・誰に届けたいか\n・何を1つ伝えたいか\n・どんな口調で話したいか\n\n出てきた文章を、そのまま出す必要はなくて。\n普段の自分が言わない言葉を直してみる。\n\nまずは下書きを1つ作るところから。",
+        "review_note": "一般的な文章作成の提案。特定のAIの機能・成果を保証せず、本人の利用実績とも述べていない。",
+        "characters": 131,
+        "review_digest": "a932f6cf8bf53ac8033a8134f13e34bf9878bb098403c027fa42ccde4b4aba96",
+        "state": "awaiting_review",
+        "remote_id": null,
+        "remote_url": null,
+        "scheduled_at": null
+      }
+    ],
+    "repository_brief_treated_as_publication_approval": false
   }
 }
