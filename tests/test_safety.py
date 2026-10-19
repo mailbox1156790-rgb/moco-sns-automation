@@ -14,6 +14,7 @@ from moco.core import ROOT, SafeError, Store, UTC, make_draft, now, settings
 from moco.engine import analysis, execute, render_with_retry, tick
 from moco.github import GitHub, parse_command, poll
 from moco.net import HTTP, NoRedirect
+from scripts.configure_github import configure_operator
 
 
 class Base(unittest.TestCase):
@@ -247,6 +248,37 @@ class HTTPTests(unittest.TestCase):
         self.assertEqual(result["metrics"]["views"], 0)
         self.assertIsNone(result["metrics"]["likes"])
         self.assertIn("likes", result["missing_metrics"])
+
+
+class OperatorConfigurationTests(Base):
+    def prepare(self, push=True):
+        (self.root / "config").mkdir()
+        shutil.copyfile(ROOT / "config/settings.json", self.root / "config/settings.json")
+        class Client:
+            def identity(_):
+                return {"repository": "mailbox1156790-rgb/moco-sns-automation", "login": "invited-operator", "id": 123, "push": push, "issues_enabled": True}
+        return Client()
+
+    def test_invited_collaborator_with_write_access_can_be_pinned(self):
+        result = configure_operator(self.root, self.prepare())
+        self.assertEqual(result["login"], "invited-operator")
+        data = json.loads((self.root / "config/local.json").read_text())
+        self.assertEqual(data["github"]["trusted_actor_ids"], [123])
+
+    def test_read_only_operator_is_rejected(self):
+        with self.assertRaises(SafeError):
+            configure_operator(self.root, self.prepare(False))
+        self.assertFalse((self.root / "config/local.json").exists())
+
+    def test_runtime_symlink_and_existing_trust_are_preserved(self):
+        client = self.prepare()
+        shared = self.root / "runtime-local.json"
+        shared.write_text(json.dumps({"github": {"trusted_actor_ids": [456]}}))
+        local = self.root / "config/local.json"
+        local.symlink_to(shared)
+        configure_operator(self.root, client)
+        self.assertTrue(local.is_symlink())
+        self.assertEqual(json.loads(shared.read_text())["github"]["trusted_actor_ids"], [456, 123])
 
 
 if __name__ == "__main__":

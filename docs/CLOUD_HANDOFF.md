@@ -13,7 +13,7 @@ Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsは
 YouTubeの指定は `https://www.youtube.com/@MOCOchannel/shorts`、公開ページでハンドルを確認済み。本人の所有/OAuth照合はまだです。
 
 Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
-自動テスト27件成功。Macで画像/動画も確認しました。架空のSNS実績を作成していません。
+自動テスト30件成功。Macで画像/動画も確認しました。架空のSNS実績を作成していません。
 
 ## クラウドから行えること
 
