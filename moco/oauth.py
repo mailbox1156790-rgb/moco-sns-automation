@@ -12,6 +12,8 @@ from .accounts import Secrets
 from .core import ROOT, SafeError
 from .net import HTTP
 
+AUTH_WAIT_SECONDS = 60 * 60
+
 
 def youtube_authorize(client_file, root=ROOT):
     """Local browser consent with PKCE/state; no HTTP access logs or auth URLs printed."""
@@ -57,11 +59,15 @@ def youtube_authorize(client_file, root=ROOT):
             "access_type": "offline", "prompt": "consent", "state": state, "code_challenge": challenge, "code_challenge_method": "S256"})
         if not webbrowser.open(url):
             raise SafeError("could_not_open_authorization_browser")
-        deadline = time.monotonic() + 300
+        # Account selection and owner consent can span several chat turns.
+        # Keep the loopback receiver alive while the owner completes those steps.
+        deadline = time.monotonic() + AUTH_WAIT_SECONDS
         while not result and time.monotonic() < deadline:
             server.handle_request()
+    if result.get("denied"):
+        raise SafeError("oauth_authorization_denied")
     if "code" not in result:
-        raise SafeError("oauth_not_authorized_or_timed_out")
+        raise SafeError("oauth_authorization_timed_out")
     response = HTTP().json("POST", "https://oauth2.googleapis.com/token", body={
         "client_id": client_id, "client_secret": client_secret, "code": result["code"],
         "code_verifier": verifier, "redirect_uri": redirect, "grant_type": "authorization_code"}, form=True)

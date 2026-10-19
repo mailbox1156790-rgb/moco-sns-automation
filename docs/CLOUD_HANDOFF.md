@@ -13,7 +13,7 @@ Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも
 YouTubeの指定は `https://www.youtube.com/@MOCOchannel/shorts`、公開ページでハンドルを確認済み。本人がこのチャットで所有を確認しました（2026-10-19）。OAuth接続先チャンネルIDの照合はまだです。
 
 Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
-自動テスト30件成功。Macで画像/動画も確認しました。架空のSNS実績を作成していません。
+自動テスト35件成功。Macで画像/動画も確認しました。架空のSNS実績を作成していません。
 本人のGitHub認証とpush/Issue権限を確認し、ソースと報告をmainへpush済みです。
 [実Issue #1](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1)をMacで処理し、[実返信](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109)とローカル実行記録を照合済みです。
 Mac常駐処理が[実Issue #2](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2)を自動受信し、実測0件の分析結果を返信したことも確認しました（手動tickなし）。120秒間隔で受信します。
@@ -40,6 +40,8 @@ Issueには `moco:command` ラベルと厳密なJSON本文が必要です。新�
 
 GitHubからコードを自動更新しません。Macで差分を確認・テストし、`python3 scripts/install_runtime.py --github` で新しい固定コピーを配置します。
 本人のOS保護設定は変更しません。Macのスリープ中には処理できない点を運用計画に含めてください。
+
+YouTube認証の最初の試行はMacの5分タイムアウトで終了しました。待受を60分へ延長し35件のテスト成功。本人所有の既存OAuthアプリで再接続する段階です。古いブラウザの戻り先URLを再利用しないでください。
 
 ## 次の優先事項
 

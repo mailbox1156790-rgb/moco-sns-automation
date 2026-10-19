@@ -76,6 +76,10 @@ python3 -m moco account youtube
 本人がブラウザの同意を操作します。この版が要求するのは読み取り権限だけです。コード/トークンをチャットへ送らないでください。
 `mine=true` と `forHandle=@MOCOchannel` のID一致を確認した後、本人確認済みのIDを `config/local.json` に設定します。
 OAuthアプリの公開/テスト状態や再同意要否はGoogle Consoleで確認します。
+Macの認証処理は最大60分間待ちます。その間は起動した処理を終了しないでください。
+`127.0.0.1 で接続が拒否されました` と出る場合、Mac側の待受が終了している可能性があります。
+Mac側が `oauth_authorization_timed_out` なら新しい認証を開始します。古い戻り先URLは再利用・共有しません。
+本人が拒否した場合は `oauth_authorization_denied` と区別して記録します。
 
 ## 4. Instagram / Threads
 

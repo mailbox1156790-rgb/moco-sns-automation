@@ -1,7 +1,7 @@
 {
   "date_jst": "2026-10-19",
   "mode": "draft_only",
-  "unit_tests_passed": 30,
+  "unit_tests_passed": 35,
   "render": {
     "id": "moco-7db4788a583f4b6f",
     "width": 1080,
@@ -68,11 +68,18 @@
     }
   },
   "deployment": {
-    "source_sha256": "50bec47874c30128e0a13fbf71bed723ba971f44c569b90d7e693e6acc2285a1",
+    "source_sha256": "abbe381177e282e72fa754fd30dc5902768d7dd077e049758c41495874864620",
     "github_polling": true,
     "interval_seconds": 120
   },
   "measured_sns_metrics_samples": 0,
   "live_posting_implemented": false,
-  "public_posts_created": 0
+  "public_posts_created": 0,
+  "youtube_oauth": {
+    "status": "retry_pending",
+    "last_failure": "local_receiver_timed_out",
+    "callback_wait_seconds": 3600,
+    "app_ownership_confirmed": true,
+    "tokens_saved": false
+  }
 }
