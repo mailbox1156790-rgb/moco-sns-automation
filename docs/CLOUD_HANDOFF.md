@@ -9,7 +9,7 @@
 
 GitHubの指示を本人のMacで受け、制作→本人確認→予約/公開→実測→分析→改善→GitHub報告を段階導入します。
 現在は下書き専用。公開用APIは未実装です。初回の本人確認を省略しないでください。
-Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも本人指定の `https://www.threads.com/@mocochan85` を受領し設定済み（共有パラメータは除去）。Threadsの本文・APIアカウント照合は未実施。InstagramはKeychain保存・API本人ID照合まで完了し、ID `17841469438292740` をこのMacのローカル設定へ固定しました。
+Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも本人指定の `https://www.threads.com/@mocochan85` を受領し設定済み（共有パラメータは除去）。Threadsの公開本文4件を閲覧しました。APIアカウント照合は未実施。InstagramはKeychain保存・API本人ID照合まで完了し、ID `17841469438292740` をこのMacのローカル設定へ固定しました。
 YouTubeは本人所有の `https://www.youtube.com/@MOCOchannel/shorts`。読み取りOAuth後にチャンネルID `UCjcZcz7chD2o6hu4ZUZSA8Q` の一致も確認済みです。
 
 Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
@@ -55,3 +55,5 @@ YouTubeの最初の認証はMacの5分タイムアウトで終了しました。
 
 未確定のMeta権限名・Graph API版・利用上限を断定しないでください。developerサイトの一部はこの調査で取得できず、公式Meta Postmanコレクションを参照しています。
 公開POSTの通信失敗を自動再送する実装は入れず、応答不明は照合待ちとして止めてください。
+
+Threadsの追加承認後、専用アプリへ用途と基本/Insightsの2読取権限を追加しました。Threads用クライアントIDは1774625623767445。本人はChromeのAnnaログイン保持を希望しているため、Chromeではログアウトしないでください。もこはアプリ内の別ブラウザで本人ログイン待ちです。テスター招待の完了はまだ確認できていません。詳細は `docs/reports/2026-10-19-threads-preparation.md` を参照してください。

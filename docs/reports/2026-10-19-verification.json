@@ -181,7 +181,14 @@
     "threads_read_permissions_owner_approved": [
       "threads_basic",
       "threads_manage_insights"
-    ]
+    ],
+    "threads_use_case_added": true,
+    "threads_client_id": "1774625623767445",
+    "threads_read_permission_ui_ready": [
+      "threads_basic",
+      "threads_manage_insights"
+    ],
+    "threads_tester_invitation_completion_verified": false
   },
   "token_import": {
     "implemented": true,
@@ -230,6 +237,16 @@
     "background_metrics_collection_verified": false,
     "token_expiry_verified": false,
     "refresh_implemented": false,
+    "new_sns_posts_created": 0
+  },
+  "threads_connection": {
+    "status": "owner_login_pending_in_separate_in_app_browser",
+    "owner_wants_chrome_anna_login_preserved": true,
+    "chrome_anna_logged_out": false,
+    "public_post_texts_observed": 4,
+    "api_identity_verified": false,
+    "token_saved": false,
+    "background_collection_enabled": false,
     "new_sns_posts_created": 0
   }
 }
