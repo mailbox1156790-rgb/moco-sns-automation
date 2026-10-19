@@ -85,6 +85,8 @@ Mac側が `oauth_authorization_timed_out` なら新しい認証を開始しま�
 
 このMacではInstagramの本人ログインとプロフェッショナルダッシュボードを確認済みです。Creator/Businessの内訳は未確認です。Metaの本人確認を通過し、開発者アプリ画面へアクセスできることを確認しました。専用アプリ「Moco SNS Automation」は本人が作成済み。本人承認後に `instagram_business_basic` と `instagram_business_manage_insights` の2権限だけ追加し、mocochan85のInstagramテスター招待も本人が承認しました。既存Anna用アプリを編集していません。公式Instagramで本人ログイン・読み取り同意を進め、トークンをKeychainへ保存後にAPIのID照合を行います。Metaの標準生成リンクは投稿/DMを含む5権限を要求したため、認証URLのscopeを承認済みの2権限へ絞りました。認証URLやトークンを報告へ貼らないでください。コードや画面の認証URLをGitHubへ貼らないでください。
 Threadsはプロフィール→共有→リンクをコピーでURLを確認します。
+
+Instagramの本人ログインで接続エラーが出たため、現在は本人のパスワード再設定待ちです。[公式再設定ページ](https://www.instagram.com/accounts/password/reset/)で `mocochan85` を指定し、登録メール/SMSに届く案内を本人が操作してください。新しいパスワードの入力・確認・確定は本人が行い、チャットやGitHubへ貼りません。再設定後にMacで公式ログインを確認し、必要なら新しい読み取り認証を開始します。古い認証URLや復旧リンクは再利用・共有しません。
 Meta Developer側のアプリ作成・本人ログイン・同意・必要な審査は本人操作です。現在は自動化していません。
 必要な読取権限・API版を公式画面で確認後、トークンをMacの非表示入力からKeychainへ保存します。
 
