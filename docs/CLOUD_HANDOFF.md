@@ -1,59 +1,63 @@
 # クラウド側Codexへの引き継ぎ
 
-専用リポジトリ：`mailbox1156790-rgb/moco-sns-automation`
+専用リポジトリ：`mailbox1156790-rgb/moco-sns-automation`。更新日：2026-10-19 JST。
+最初に `AGENTS.md`、`docs/reports/2026-10-19-initial.md`、`docs/API_RESEARCH.md` を読んでください。秘密値をチャットで求める必要はありません。
 
-まず `AGENTS.md` と `docs/reports/2026-10-19-initial.md`、`docs/API_RESEARCH.md` を読んでください。
-このファイルだけで担当を移せます。チャット履歴に秘密値を求める必要はありません。
+## 現在の状態
 
-## 目標と現在地
+GitHubの信頼済み定型指示をMacで受信し、下書き制作・確認待ち管理・実測・分析・GitHub報告を実行する基盤が動いています。公開APIは未実装、動作モードは `draft_only`、新規SNS公開は0件です。
 
-GitHubの指示を本人のMacで受け、制作→本人確認→予約/公開→実測→分析→改善→GitHub報告を段階導入します。
-現在は下書き専用。公開用APIは未実装です。初回の本人確認を省略しないでください。
-Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも本人指定の `https://www.threads.com/@mocochan85` を受領し設定済み（共有パラメータは除去）。Threadsの公開本文4件を閲覧しました。APIアカウント照合は未実施。InstagramはKeychain保存・API本人ID照合まで完了し、ID `17841469438292740` をこのMacのローカル設定へ固定しました。
-YouTubeは本人所有の `https://www.youtube.com/@MOCOchannel/shorts`。読み取りOAuth後にチャンネルID `UCjcZcz7chD2o6hu4ZUZSA8Q` の一致も確認済みです。
+本人が最初のテーマを **AI動画・SNS自動化の実用的なヒント** と指定しました。親しみのある短い問いかけと具体的な手順を仮方針とし、本人の経験や成果を創作しません。視聴者属性は未取得です。投稿頻度/時刻、避けたい内容、現行導線、本人素材と声・顔の利用範囲は未確定です。最初の原稿は `content/drafts/2026-10-19-first-batch/` に保存済みです。内容と制作記録は `docs/reports/2026-10-19-first-drafts.md` を参照してください。
 
-Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
-自動テスト59件成功。YouTubeの公開済みShorts 3本で公式APIの実測と常駐更新、Instagramの既存リール3本で6指標の前景実取得に成功しました。新規公開は0件です。
-本人のGitHub認証とpush/Issue権限を確認し、ソースと報告をmainへpush済みです。
-[実Issue #1](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1)をMacで処理し、[実返信](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109)とローカル実行記録を照合済みです。
-Mac常駐処理が[実Issue #2](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2)を自動受信し、実測0件の分析結果を返信したことも確認しました（手動tickなし）。120秒間隔で受信します。
+|媒体|投稿先|API照合済みID|実測|
+|---|---|---|---|
+|YouTube|https://www.youtube.com/@MOCOchannel/shorts|UCjcZcz7chD2o6hu4ZUZSA8Q|本人OAuthのmine/forHandle一致。既存Shorts 3本の公開統計|
+|Instagram|https://www.instagram.com/mocochan85/|17841469438292740|本人ユーザー名/テスターID一致。既存リール3本、6指標|
+|Threads|https://www.threads.com/@mocochan85|27052393934458790|本人指定プロフィールとAPIユーザー名/ID照合。既存3件、6指標|
 
-## クラウドから行えること
+認証情報はMacのKeychainだけに保存しています。InstagramはGraph API v26.0、Threadsはv1.0の実接続です。テスター検索候補の内部IDはAPI IDへ流用していません。権限一覧APIはInstagramがHTTP 400、ThreadsがHTTP 500で未取得。UIの読取2権限準備と実際の読み取り成功とは分けて記録しています。Metaトークンの実期限と更新自動化は未確認/未実装です。
 
-- Pythonロジックの確認と `python3 -m unittest discover -s tests -v`。
-- 公式仕様調査、本人の方針に基づく原稿案・改善案、PRでのコード変更。
-- 本人から信頼設定されたGitHubアカウントを用いる場合の定型Issue作成。許可指示は `draft` / `render` / `status` / `analyze` / `stop`。
+専用Metaアプリは本人が作成した `Moco SNS Automation`、アプリID1150847227441767、InstagramクライアントID2011482642896301、ThreadsクライアントID1774625623767445。読取はInstagram `instagram_business_basic` / `instagram_business_manage_insights`、Threads `threads_basic` / `threads_manage_insights` の本人承認範囲です。投稿・返信・DMの追加許可は求めていません。
 
-Issueには `moco:command` ラベルと厳密なJSON本文が必要です。新しいUUIDを指示ごとに使います。
-本人が信頼した数値GitHub IDで作成/編集したIssueしかMacは実行しません。クラウド側の自動アカウントや別のbotを勝手に信頼設定へ追加しないでください。
-現在Macで登録した本人の共同作業アカウントは `makoxx0815-tech` です。リポジトリ所有者やクラウド側の別アカウントも自動では信頼されません。
-公開・承認・再開・シェル・認証・git pullの指示は実行されません。
+Annaの既存アプリ・認証情報は変更していません。**本人はChromeのAnnaログイン保持を希望しています。Chromeでログアウト/切り替えをしないでください。** Threadsは本人がSafariで認証し、Macの非表示フォームへコピーして保存しました。Safariのログインは本人申告、API IDとInsightsはMacから実照合済みです。CAPTCHAの迂回やFacebookパスワード再設定は行っていません。保存済みパスワードの確認は本人だけが行い、ツールで一覧・値を読まないでください。
 
-## Macに残るもの
+詳細：`docs/reports/2026-10-19-youtube-connection.md`、`2026-10-19-instagram-connection.md`、`2026-10-19-threads-connection.md`、機械可読記録 `2026-10-19-verification.json`。
+
+## Macの処理と検証
+
+Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。自動テスト59件成功。元の描画サンプルは `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC、本人確認待ち。新しい制作物も本人承認前です。
+
+本人のGitHub共同作業アカウントは `makoxx0815-tech`（数値ID343835729）。push/Issue権限とKeychain保管を確認済みです。
+- [Issue #1](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109)：前景の状態確認、返信ID/DB一致、1件。
+- [Issue #2](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2#issuecomment-6264893882)：launchdが手動tickなしで受信・分析・返信。これは接続前の実測0件時点の証拠です。
+- [Issue #3](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3#issuecomment-6265853054)：公開YouTube 3本の定期実測報告。常駐返信・実ID照合・重複防止を確認済み。
+
+このMacでは登録済みの照合済み投稿だけを6時間ごとに収集し、最新9件を分析対象にしています。YouTubeの常駐実測成功は確認済み。Instagram/Threadsも各3件の前景実測と常駐用コードの本人ID確認を完了し、収集対象へ追加しました。この2媒体の常駐実測成功は次周期待ちです。次の取得予定は2026-10-20 01:47 JST、Macの起動/ログイン/ネット接続が必要です。未取得を0で補いません。異なる媒体・公開後経過時間の数値から因果や最適時刻を断定しません。
+
+GitHubへ自動送信する実測値は、公開状態と所有を再確認したYouTubeの公開統計だけです。Instagram/ThreadsのInsights数値はMac内に保持し、クラウド側が取得できると仮定しないでください。GitHubへは接続状態・件数・指標名・公開投稿ID/URLだけ記録しています。
+
+## クラウドからMacへ指示する方法
+
+`moco:command` ラベル付きIssueへ厳密なJSONを置きます。指示ごとに新しいUUIDが必要です。例は `examples/command-status.json` と `examples/command-draft.json`。
+許可は `draft` / `render` / `status` / `analyze` / `stop` のみです。数値の作者IDと最終編集者IDが信頼設定済みの場合だけ実行します。リポジトリ所有者・別bot・クラウドアカウントを自動で信頼しません。
+
+公開・承認・再開・認証・シェル・git pullは受け付けません。クラウドはコード/原稿の編集・レビュー・PRを行えますが、MacのKeychain、DB、Safari、launchdを直接使えると仮定しないでください。原稿の変更はMacで確認して `revise` / `render` に反映します。
+
+## ローカルの場所
 
 ソース：`/Users/maco/Documents/Codex/2026-10-19/sns-mac-https-github-com-mailbox1156790/moco-sns-automation`
-実行用固定コピー：`~/Library/Application Support/MocoSNS/releases/コードハッシュ/`
-状態・制作物：同フォルダの `data/`。チェックアウトの `var` がリンクしています。
-個別設定：同フォルダの `local-settings.json`。チェックアウトの `config/local.json` がリンクしています。
-認証情報：macOS Keychain。GitHubへのコミットやクラウド側への移送は禁止です。
-常駐処理：本人のlaunchd `jp.moco.sns-automation`、120秒間隔。ログ/状態はローカルだけに保存。
+実行用固定コピー：`~/Library/Application Support/MocoSNS/releases/d6598cb54d3e6e13/`
+ソースSHA-256：`d6598cb54d3e6e13dfce16bc785c60d8135c781272ba3de14e0650fa88daad9c`
+共有状態・制作物：`~/Library/Application Support/MocoSNS/data/`（チェックアウトの `var` からリンク）
+個別設定：同フォルダの `local-settings.json`（チェックアウトの `config/local.json` からリンク）
+常駐処理：本人のlaunchd `jp.moco.sns-automation`、120秒ごとのGitHub受信。
 
-GitHubからコードを自動更新しません。Macで差分を確認・テストし、`python3 scripts/install_runtime.py --github` で新しい固定コピーを配置します。
-本人のOS保護設定は変更しません。Macのスリープ中には処理できない点を運用計画に含めてください。
+Documentsへのバックグラウンドアクセス制限を避けるため、レビュー済みコードの固定コピーで実行しています。コード変更はMacで差分確認・必要なテスト後、`python3 scripts/install_runtime.py --github` で配置します。無条件のgit pullや公開リポジトリ用self-hosted runnerを追加しません。OS保護設定は変更していません。元データは無視対象 `work/` に保全しています。
 
-YouTubeの最初の認証はMacの5分タイムアウトで終了しました。待受を60分へ修正し、再認証・Keychain保存・実API照合まで完了しました。最新結果は `docs/reports/2026-10-19-youtube-connection.md` と実測JSONを参照してください。古い認証URLは再利用しません。
+## 次に進める作業
 
-このMacだけのローカル設定で、登録済みYouTubeとInstagram投稿を6時間ごとに再取得します。`metrics_collection.enabled` の基本設定はfalseです。Threadsなど未接続媒体を勝手に有効化しないでください。完了した取得周期の結果と最新の公開YouTube実測値を、固定した[報告用Issue #3](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3)へ自動追記します。常駐での実返信・コメントID・再実行時の重複防止を確認済みです。詳細は `docs/reports/2026-10-19-instagram-status.md` を参照してください。
-
-## 次の優先事項
-
-1. 優先テーマ・投稿頻度/時刻の本人確認。YouTube所有は本人確認済み、Threads URLも受領済み。
-2. クラウド側で定型Issueを作成する場合、作者がMacで信頼設定済みかを確認。別の作者なら本人に確認してから追加。
-3. YouTubeの読取OAuth・ID固定・3本の実測照合は完了。Instagram/ThreadsのMeta接続を進める。Instagramは本人ログインと自分の編集画面・プロフェッショナルダッシュボードを確認済みです。Professionalは確認でき、Creator/Businessの内訳は未確認です。Metaの本人確認を通過し、開発者アプリ画面へのアクセスが復旧しました。既存のAnna用アプリは読み取り確認のみで、権限・認証情報を変更していません。「Moco SNS Automation」をビジネスポートフォリオ「もこちゃん」に本人が新規作成しました。MetaアプリIDは1150847227441767、Instagram用クライアントIDは2011482642896301です。本人承認後、基本情報とInsightsの読取2権限を追加し、mocochan85のテスター招待も本人承認済みです。標準の認証リンクは投稿/DMを含む5権限を要求したため、scopeを承認済みの2権限へ限定しました。新しい読み取り認証からトークン生成を確認しました。MacのKeychain保存・本人ID照合・既存リール3本のInsights実取得が完了しました。
-4. Instagramの認証は完了しました。詳細は `docs/reports/2026-10-19-instagram-connection.md`。Graph API v26.0、本人ユーザー名とテスターIDの一致、Keychain保存、既存リール3本でviews/reach/likes/comments/saved/sharesを実取得済みです。`/me/permissions` はHTTP 400で一覧未取得です。このMacの6時間更新対象へ追加しましたが、Instagramの常駐実測成功は次周期待ちです。非公開Insights数値はGitHubへ送信しません。トークンの期限・更新は未確認/未実装です。保存フォームのChrome Origin問題は修正・実ブラウザ検証済みです。
-5. 詳細Analytics、Metaトークン更新、公開アダプタを段階導入。公開前に本人確認。
-
-未確定のMeta権限名・Graph API版・利用上限を断定しないでください。developerサイトの一部はこの調査で取得できず、公式Meta Postmanコレクションを参照しています。
-公開POSTの通信失敗を自動再送する実装は入れず、応答不明は照合待ちとして止めてください。
-
-Threadsの追加承認後、専用アプリへ用途と基本/Insightsの2読取権限を追加しました。Threads用クライアントIDは1774625623767445。本人はChromeのAnnaログイン保持を希望しているため、Chromeではログアウトしないでください。アプリ内ブラウザの文字認証反復後、本人がSafariでmocochan85にログインできた旨を受領しました。検索候補から本人を選択してテスター招待を作成し、Safariで本人承認後、Metaの役割表から「承認待ち」が消えたことを確認済みです。本人確認を自動解答・迂回していません。現在はSafari側でMeta/Facebookの本人ログイン待ちです。Facebookのパスワード再設定は行っていません。保存済みログイン情報の確認も本人だけへ案内し、ツールで一覧や値を読み取らないでください。ログイン後に読み取り2権限のトークンを生成し、Mac内フォーム `secret-import threads` へ保存します。投稿・返信の追加権限が表示されたら同意せず確認します。ThreadsのKeychain保存・API本人ID照合・実測は未完了です。詳細は `docs/reports/2026-10-19-threads-preparation.md` を参照してください。
+1. 本人指定テーマの具体的な原稿・動画・カバーを提示し、内容/素材/投稿先/日時を本人が確認できる形にする。
+2. Metaトークンの期限確認と安全な更新、YouTube詳細Analytics、失敗通知・ログローテーション・バックアップ/復元を実装する。
+3. 公開アダプタは別段階で実装する。必要な公開権限の追加はその時点で本人確認。可能な媒体では非公開検証から行う。
+4. 初回の公開は本人の内容・投稿先・日時確認後。送信前に状態を永続化し、応答不明は照合待ちで停止する。公開POSTを無条件再送しない。
+5. ID・URL・公開状態を再取得し、同じ媒体と同じ経過時間の実測で改善案を作る。

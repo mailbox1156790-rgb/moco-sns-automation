@@ -6,6 +6,8 @@
 
 - [初期調査・実装報告](docs/reports/2026-10-19-initial.md)
 - [クラウド側Codexへの引き継ぎ](docs/CLOUD_HANDOFF.md)
+- [3媒体接続後の初回下書き](docs/reports/2026-10-19-first-drafts.md)
+- [Threads接続・実測結果](docs/reports/2026-10-19-threads-connection.md)
 - [操作手順](docs/OPERATIONS.md)
 - [公式API調査](docs/API_RESEARCH.md)
 - [構成・安全制御](docs/ARCHITECTURE.md)
@@ -15,8 +17,8 @@
 
 |媒体|投稿先|確認状況|
 |---|---|---|
-|Instagram|https://www.instagram.com/mocochan85/|本人ログイン・Professional確認済み。Meta本人確認済み、専用アプリ作成・読取2権限追加・本人のテスター承認済み。API認証中|
-|Threads|https://www.threads.com/@mocochan85|本人からURL受領。API権限未確認|
+|Instagram|https://www.instagram.com/mocochan85/|Keychain保存・本人API ID照合済み。既存リール3本の6指標を実取得|
+|Threads|https://www.threads.com/@mocochan85|Keychain保存・本人API ID照合済み。既存投稿3件の6指標を実取得|
 |YouTube Shorts|https://www.youtube.com/@MOCOchannel/shorts|本人所有・OAuthチャンネルID照合済み。既存Shorts 3本の実測取得済み|
 
 ## ローカルで試す

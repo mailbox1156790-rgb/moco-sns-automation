@@ -28,7 +28,7 @@ Instagram API with Instagram LoginはProfessionalアカウント向けで、Face
 
 ## Threads
 
-Threads用MetaアプリとOAuthを利用します。本人承認後、もこ専用アプリにThreads用途と基本/Insightsの2読取権限を追加し、公式画面の「テスト準備完了」を確認しました。本人トークンは未取得です。投稿は `threads_basic` / `threads_content_publish`、分析は `threads_manage_insights` を候補に、本人の付与済み権限を確認します。投稿実測にはviews/likes/replies/reposts/quotes/shares等があります。[Meta公式Threads Insights](https://www.postman.com/meta/threads/request/ndeeu6p/get-post-insights)
+Threads用MetaアプリとOAuthを利用します。本人承認後、もこ専用アプリにThreads用途と基本/Insightsの2読取権限を追加し、公式画面の「テスト準備完了」を確認しました。その後、本人がSafariで認証し、Keychain保存・公式APIの本人ID `27052393934458790` 照合・既存投稿3件の6指標取得まで完了しました。権限一覧の `/me/permissions` はHTTP 500で未取得です。投稿は `threads_basic` / `threads_content_publish`、分析は `threads_manage_insights` を候補に、本人の付与済み権限を確認します。投稿実測にはviews/likes/replies/reposts/quotes/shares等があります。[Meta公式Threads Insights](https://www.postman.com/meta/threads/request/ndeeu6p/get-post-insights)
 
 通常は `/threads` でコンテナを作り、`/threads_publish` で公開してIDを照合します。テキスト作成時の `auto_publish_text=true` は即時公開を起こすため、下書き検証では呼びません。画像・動画の配信方法やURL公開の範囲は本人の素材運用を決めてから設計します。[Meta公式Threads公開フロー](https://www.postman.com/meta/threads/documentation/dht3nzz/threads-api?entity=request-34203612-f8bf85ba-a2a2-47f8-9183-f94cd3e9c9d3)
 

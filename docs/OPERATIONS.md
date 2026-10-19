@@ -101,6 +101,7 @@ Meta画面のトークンをターミナルへ貼らずに保存する場合は�
 
 ```sh
 python3 -m moco secret-import instagram
+python3 -m moco secret-import threads
 ```
 
 表示された `http://127.0.0.1:ポート/` をこのMacのブラウザで開き、Metaの生成画面からコピーしたトークンを非表示欄へ貼り付けます。フォームは最大60分だけ待ち受け、1回保存すると終了します。トークンをURL、ファイル、ログへ書きません。Host・Origin・CSRF・入力サイズを検証し、CSPとno-storeを設定しています。HTTPはMacのループバック内だけに使用し、外部APIのTLS証明書検証は引き続き有効です。
@@ -124,7 +125,7 @@ APIで投稿の所有を照合してから、投稿ID・URL・取得時刻・指
 
 ### 実測値の定期更新
 
-このMacでは確認済みYouTubeの登録済み投稿だけを6時間ごとに更新し、分析JSONも更新します。基本設定の `metrics_collection.enabled` はfalseで、Macの `config/local.json` でYouTubeだけtrueにしています。
+このMacでは確認済みYouTube・Instagram・Threadsの登録済み投稿を6時間ごとに更新し、分析JSONも更新します。基本設定の `metrics_collection.enabled` はfalseで、Macの `config/local.json` で3媒体を有効にしています。各3件の前景実測を取得済みです。常駐取得成功はYouTubeで確認済み、Instagram/Threadsは次周期待ちです。
 `interval_seconds: 21600`、`max_posts_per_run: 20`。対象は既に所有照合された `published` の投稿IDです。
 結果は `var/reports/metrics-collection.json`。取得失敗時は失敗を記録して次の周期を待ちます。停止中は実測の外部APIへ接続しません。
 

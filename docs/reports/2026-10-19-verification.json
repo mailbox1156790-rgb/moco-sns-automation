@@ -25,14 +25,16 @@
     "api_verification": {
       "youtube": true,
       "instagram": true,
-      "threads": false
+      "threads": true
     },
     "youtube_channel_id": "UCjcZcz7chD2o6hu4ZUZSA8Q",
     "instagram_owner_confirmed": true,
     "instagram_professional_account_confirmed": true,
     "instagram_account_type": "professional",
     "instagram_creator_or_business_subtype": null,
-    "instagram_account_id": "17841469438292740"
+    "instagram_account_id": "17841469438292740",
+    "threads_account_id": "27052393934458790",
+    "threads_owner_confirmed": true
   },
   "github": {
     "repository": "mailbox1156790-rgb/moco-sns-automation",
@@ -100,7 +102,7 @@
     "github_polling": true,
     "interval_seconds": 120
   },
-  "measured_sns_metrics_samples": 6,
+  "measured_sns_metrics_samples": 9,
   "live_posting_implemented": false,
   "public_posts_created": 0,
   "youtube_oauth": {
@@ -126,10 +128,11 @@
     },
     "enabled_platforms_on_this_mac": [
       "youtube",
-      "instagram"
+      "instagram",
+      "threads"
     ]
   },
-  "existing_public_posts_imported": 3,
+  "existing_public_posts_imported": 9,
   "meta_connection": {
     "status": "instagram_connected_identity_and_reel_insights_verified",
     "instagram_owner_login_verified": true,
@@ -140,7 +143,7 @@
     "developer_apps_access_verified": true,
     "api_authentication_complete": true,
     "instagram_account_id": "17841469438292740",
-    "threads_account_id": null,
+    "threads_account_id": "27052393934458790",
     "existing_anna_app_permissions_changed": false,
     "existing_anna_credentials_changed": false,
     "new_app": {
@@ -242,13 +245,13 @@
     "new_sns_posts_created": 0
   },
   "threads_connection": {
-    "status": "safari_meta_owner_login_pending",
+    "status": "connected_identity_and_existing_post_insights_verified",
     "owner_wants_chrome_anna_login_preserved": true,
     "chrome_anna_logged_out": false,
     "public_post_texts_observed": 4,
-    "api_identity_verified": false,
-    "token_saved": false,
-    "background_collection_enabled": false,
+    "api_identity_verified": true,
+    "token_saved": true,
+    "background_collection_enabled": true,
     "new_sns_posts_created": 0,
     "security_check_owner_reported_repeating": true,
     "observed_security_check": "enter_displayed_characters",
@@ -262,13 +265,102 @@
     "safari_owner_login_verified_by_agent": false,
     "standard_generator_in_chrome_failed": true,
     "standard_generator_error_code": 1349245,
-    "token_intake_ready": true,
+    "token_intake_ready": false,
     "safari_meta_owner_login_required": true,
-    "safari_meta_owner_login_complete": false,
+    "safari_meta_owner_login_complete": true,
     "chrome_moco_meta_session_reverified": true,
     "standard_generator_after_tester_acceptance_still_failed": true,
     "facebook_password_reset_performed": false,
     "password_manager_values_read_by_agent": false,
-    "owner_only_saved_login_check_requested": true
+    "owner_only_saved_login_check_requested": true,
+    "safari_meta_owner_login_evidence": "owner_statement",
+    "keychain_storage_verified": true,
+    "receiver_stopped_after_save": true,
+    "account_id": "27052393934458790",
+    "username": "mocochan85",
+    "periodic_collection_enabled_on_this_mac": true,
+    "background_metrics_collection_verified": false,
+    "deployed_runtime_identity_verified": true,
+    "existing_posts_imported": 3,
+    "available_metric_names": [
+      "views",
+      "likes",
+      "replies",
+      "reposts",
+      "quotes",
+      "shares"
+    ],
+    "missing_requested_metrics": [],
+    "last_collected_at": "2026-10-19T12:43:33.438585+00:00",
+    "permissions_api_verified": false,
+    "permissions_error_code": "http_status_500",
+    "private_insight_values_in_github": false,
+    "token_expiry_verified": false,
+    "refresh_implemented": false
+  },
+  "existing_posts_imported_by_platform": {
+    "youtube": 3,
+    "instagram": 3,
+    "threads": 3
+  },
+  "content_policy": {
+    "owner_confirmed_primary_focus": "AI動画・SNS自動化の実用的なヒント",
+    "posting_schedule_confirmed": false,
+    "avoid_topics_confirmed": false,
+    "owner_assets_confirmed": false
+  },
+  "first_content_batch": {
+    "drafts": [
+      {
+        "id": "moco-5ab9604cc71245a4",
+        "platform": "threads",
+        "state": "awaiting_review",
+        "remote_id": null,
+        "remote_url": null
+      },
+      {
+        "id": "moco-362ac118caea4b16",
+        "platform": "instagram",
+        "state": "awaiting_review",
+        "remote_id": null,
+        "remote_url": null,
+        "render": {
+          "id": "moco-362ac118caea4b16",
+          "width": 1080,
+          "height": 1920,
+          "video_codec": "h264",
+          "audio_codec": "aac",
+          "duration_seconds": 35.842358,
+          "review_digest": "0b39a4407deced40288feaf3d500f2fc9c3f2b8f5385e7ea825b0274ba16c324",
+          "public": false
+        },
+        "audio_level_check": [
+          "mean_volume: -25.1 dB",
+          "max_volume: -8.9 dB"
+        ]
+      },
+      {
+        "id": "moco-d36b187ea9fa4301",
+        "platform": "youtube",
+        "state": "awaiting_review",
+        "remote_id": null,
+        "remote_url": null,
+        "render": {
+          "id": "moco-d36b187ea9fa4301",
+          "width": 1080,
+          "height": 1920,
+          "video_codec": "h264",
+          "audio_codec": "aac",
+          "duration_seconds": 35.842358,
+          "review_digest": "fab4e5b974ab0d378535351b7c08b5708cb25d3eb97e50d667b9b9e56aed2548",
+          "public": false
+        },
+        "audio_level_check": [
+          "mean_volume: -25.1 dB",
+          "max_volume: -8.9 dB"
+        ]
+      }
+    ],
+    "public": false
   }
 }
