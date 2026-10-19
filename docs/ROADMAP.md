@@ -6,7 +6,7 @@
 |1|管理ID、重複防止、承認ハッシュ、予約シミュレーション、停止、制作再試行|実装・テスト済み|
 |1|GitHub Issueの信頼検証、受信、結果返信|実装・模擬検証・実Issue往復検証済み|
 |1|Macのlaunchd常駐処理|120秒間隔のGitHub自動受信・分析結果返信を実Issueで検証済み|
-|2|Instagram/Threadsの対象とAPI権限、YouTube本人OAuthの照合|両プロフィールURLは本人から受領済み。API認証・YouTube所有確認待ち|
+|2|Instagram/Threadsの対象とAPI権限、YouTube本人OAuthの照合|両プロフィールURL受領・YouTube所有の本人確認済み。API認証・チャンネルID照合待ち|
 |2|既存投稿IDの照合と実測収集|読取クライアント初期実装。実アカウント検証待ち|
 |2|Meta OAuth開始/トークン更新、YouTube詳細Analytics取込|未実装|
 |3|YouTube resumable upload、Metaのコンテナ・公開・状態照合|未実装|

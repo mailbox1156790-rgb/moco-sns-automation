@@ -29,7 +29,11 @@
       "profile_url": "https://www.youtube.com/@MOCOchannel/shorts",
       "handle": "@MOCOchannel",
       "account_id": null,
-      "owner_confirmed": false
+      "owner_confirmed": true,
+      "owner_confirmation": {
+        "method": "owner_statement_in_chat",
+        "date_jst": "2026-10-19"
+      }
     },
     "instagram": {
       "profile_url": "https://www.instagram.com/mocochan85/",

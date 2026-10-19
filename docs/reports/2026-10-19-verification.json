@@ -17,8 +17,12 @@
     "instagram_profile_url": "https://www.instagram.com/mocochan85/",
     "threads_profile_url": "https://www.threads.com/@mocochan85",
     "youtube_profile_url": "https://www.youtube.com/@MOCOchannel/shorts",
-    "youtube_owner_confirmed": false,
-    "sns_oauth_verified": false
+    "youtube_owner_confirmed": true,
+    "sns_oauth_verified": false,
+    "youtube_owner_confirmation": {
+      "method": "owner_statement_in_chat",
+      "date_jst": "2026-10-19"
+    }
   },
   "github": {
     "repository": "mailbox1156790-rgb/moco-sns-automation",
@@ -64,7 +68,7 @@
     }
   },
   "deployment": {
-    "source_sha256": "23200c936587fa768af61d35f5929c73767e7886e5848ed1f70c00e33e5fbcf7",
+    "source_sha256": "50bec47874c30128e0a13fbf71bed723ba971f44c569b90d7e693e6acc2285a1",
     "github_polling": true,
     "interval_seconds": 120
   },

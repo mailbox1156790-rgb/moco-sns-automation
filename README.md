@@ -17,7 +17,7 @@
 |---|---|---|
 |Instagram|https://www.instagram.com/mocochan85/|本人からURL受領、公開プロフィール確認。API権限未確認|
 |Threads|https://www.threads.com/@mocochan85|本人からURL受領。API権限未確認|
-|YouTube Shorts|https://www.youtube.com/@MOCOchannel/shorts|MOCO channel / @MOCOchannel を公開ページで確認。本人の所有・OAuth照合待ち|
+|YouTube Shorts|https://www.youtube.com/@MOCOchannel/shorts|MOCO channel / @MOCOchannel を公開ページで確認。本人が所有を確認済み。OAuth照合待ち|
 
 ## ローカルで試す
 
