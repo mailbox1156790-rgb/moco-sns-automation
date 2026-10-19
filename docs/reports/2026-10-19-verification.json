@@ -24,14 +24,15 @@
     },
     "api_verification": {
       "youtube": true,
-      "instagram": false,
+      "instagram": true,
       "threads": false
     },
     "youtube_channel_id": "UCjcZcz7chD2o6hu4ZUZSA8Q",
     "instagram_owner_confirmed": true,
     "instagram_professional_account_confirmed": true,
     "instagram_account_type": "professional",
-    "instagram_creator_or_business_subtype": null
+    "instagram_creator_or_business_subtype": null,
+    "instagram_account_id": "17841469438292740"
   },
   "github": {
     "repository": "mailbox1156790-rgb/moco-sns-automation",
@@ -99,7 +100,7 @@
     "github_polling": true,
     "interval_seconds": 120
   },
-  "measured_sns_metrics_samples": 3,
+  "measured_sns_metrics_samples": 6,
   "live_posting_implemented": false,
   "public_posts_created": 0,
   "youtube_oauth": {
@@ -122,19 +123,23 @@
       "public": false,
       "finished_at": "2026-10-19T10:50:00.320655+00:00",
       "next_due_at": "2026-10-19T16:47:48.277750+00:00"
-    }
+    },
+    "enabled_platforms_on_this_mac": [
+      "youtube",
+      "instagram"
+    ]
   },
   "existing_public_posts_imported": 3,
   "meta_connection": {
-    "status": "instagram_token_generated_keychain_import_pending",
+    "status": "instagram_connected_identity_and_reel_insights_verified",
     "instagram_owner_login_verified": true,
     "professional_dashboard_visible": true,
     "email_verification_owner_reported_complete": true,
     "human_verification_owner_reported_complete": true,
-    "observed_at": "2026-10-19T12:00:03.099306+00:00",
+    "observed_at": "2026-10-19T12:08:46.989786+00:00",
     "developer_apps_access_verified": true,
-    "api_authentication_complete": false,
-    "instagram_account_id": null,
+    "api_authentication_complete": true,
+    "instagram_account_id": "17841469438292740",
     "threads_account_id": null,
     "existing_anna_app_permissions_changed": false,
     "existing_anna_credentials_changed": false,
@@ -155,7 +160,7 @@
     "read_permissions_added": true,
     "read_permissions_owner_approved": true,
     "instagram_tester_invitation_accepted_by_owner": true,
-    "token_saved_by_this_setup": false,
+    "token_saved_by_this_setup": true,
     "requested_auth_scopes": [
       "instagram_business_basic",
       "instagram_business_manage_insights"
@@ -168,7 +173,15 @@
     "password_reset_performed_by_agent": false,
     "password_reset_owner_reported_complete": true,
     "normal_instagram_owner_login_reverified": true,
-    "token_generated_ui_verified": true
+    "token_generated_ui_verified": true,
+    "permissions_api_verified": false,
+    "permissions_error_code": "http_status_400",
+    "instagram_insights_read_verified": true,
+    "threads_use_case_owner_approved": true,
+    "threads_read_permissions_owner_approved": [
+      "threads_basic",
+      "threads_manage_insights"
+    ]
   },
   "token_import": {
     "implemented": true,
@@ -177,13 +190,15 @@
     "tokens_in_urls_files_or_logs": false,
     "host_origin_csrf_checks": true,
     "existing_credentials_overwritten": false,
-    "keychain_save_verified": false,
+    "keychain_save_verified": true,
     "initial_chrome_submission_rejected": true,
     "rejection_cause": "no-referrer_policy_caused_null_origin",
     "referrer_policy": "same-origin",
     "chrome_fixture_submission_verified": true,
     "fixture_saved_to_real_keychain": false,
-    "owner_retry_pending": true
+    "owner_retry_pending": false,
+    "completed": true,
+    "receiver_stopped_after_save": true
   },
   "native_build": {
     "canonical_cache_path_fixed": true,
@@ -191,5 +206,30 @@
     "compiled_on_mac": true,
     "existing_youtube_keychain_and_api_read_reverified": true,
     "deployed_runtime_youtube_read_reverified": true
+  },
+  "instagram_connection": {
+    "account_id": "17841469438292740",
+    "username": "mocochan85",
+    "identity_matches_owner_and_tester": true,
+    "api_version": "v26.0",
+    "keychain_storage_verified": true,
+    "deployed_runtime_identity_verified": true,
+    "existing_reels_imported": 3,
+    "available_metric_names": [
+      "views",
+      "reach",
+      "likes",
+      "comments",
+      "saved",
+      "shares"
+    ],
+    "missing_requested_metrics": [],
+    "last_collected_at": "2026-10-19T12:09:46.848172+00:00",
+    "private_insight_values_in_github": false,
+    "periodic_collection_enabled_on_this_mac": true,
+    "background_metrics_collection_verified": false,
+    "token_expiry_verified": false,
+    "refresh_implemented": false,
+    "new_sns_posts_created": 0
   }
 }

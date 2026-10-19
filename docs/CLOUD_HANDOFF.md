@@ -9,11 +9,11 @@
 
 GitHubの指示を本人のMacで受け、制作→本人確認→予約/公開→実測→分析→改善→GitHub報告を段階導入します。
 現在は下書き専用。公開用APIは未実装です。初回の本人確認を省略しないでください。
-Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも本人指定の `https://www.threads.com/@mocochan85` を受領し設定済み（共有パラメータは除去）。Threadsの本文・APIアカウント照合は未実施。
+Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも本人指定の `https://www.threads.com/@mocochan85` を受領し設定済み（共有パラメータは除去）。Threadsの本文・APIアカウント照合は未実施。InstagramはKeychain保存・API本人ID照合まで完了し、ID `17841469438292740` をこのMacのローカル設定へ固定しました。
 YouTubeは本人所有の `https://www.youtube.com/@MOCOchannel/shorts`。読み取りOAuth後にチャンネルID `UCjcZcz7chD2o6hu4ZUZSA8Q` の一致も確認済みです。
 
 Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
-自動テスト59件成功。YouTubeの公開済みShorts 3本で公式APIの実測を取得し、常駐処理での更新も成功しました。新規公開は0件です。
+自動テスト59件成功。YouTubeの公開済みShorts 3本で公式APIの実測と常駐更新、Instagramの既存リール3本で6指標の前景実取得に成功しました。新規公開は0件です。
 本人のGitHub認証とpush/Issue権限を確認し、ソースと報告をmainへpush済みです。
 [実Issue #1](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1)をMacで処理し、[実返信](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109)とローカル実行記録を照合済みです。
 Mac常駐処理が[実Issue #2](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2)を自動受信し、実測0件の分析結果を返信したことも確認しました（手動tickなし）。120秒間隔で受信します。
@@ -43,14 +43,14 @@ GitHubからコードを自動更新しません。Macで差分を確認・テ�
 
 YouTubeの最初の認証はMacの5分タイムアウトで終了しました。待受を60分へ修正し、再認証・Keychain保存・実API照合まで完了しました。最新結果は `docs/reports/2026-10-19-youtube-connection.md` と実測JSONを参照してください。古い認証URLは再利用しません。
 
-このMacだけのローカル設定で、登録済みYouTube投稿を6時間ごとに再取得します。`metrics_collection.enabled` の基本設定はfalseです。Metaなど未接続媒体を勝手に有効化しないでください。完了した取得周期の結果と最新の公開YouTube実測値を、固定した[報告用Issue #3](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3)へ自動追記します。常駐での実返信・コメントID・再実行時の重複防止を確認済みです。詳細は `docs/reports/2026-10-19-instagram-status.md` を参照してください。
+このMacだけのローカル設定で、登録済みYouTubeとInstagram投稿を6時間ごとに再取得します。`metrics_collection.enabled` の基本設定はfalseです。Threadsなど未接続媒体を勝手に有効化しないでください。完了した取得周期の結果と最新の公開YouTube実測値を、固定した[報告用Issue #3](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3)へ自動追記します。常駐での実返信・コメントID・再実行時の重複防止を確認済みです。詳細は `docs/reports/2026-10-19-instagram-status.md` を参照してください。
 
 ## 次の優先事項
 
 1. 優先テーマ・投稿頻度/時刻の本人確認。YouTube所有は本人確認済み、Threads URLも受領済み。
 2. クラウド側で定型Issueを作成する場合、作者がMacで信頼設定済みかを確認。別の作者なら本人に確認してから追加。
-3. YouTubeの読取OAuth・ID固定・3本の実測照合は完了。Instagram/ThreadsのMeta接続を進める。Instagramは本人ログインと自分の編集画面・プロフェッショナルダッシュボードを確認済みです。Professionalは確認でき、Creator/Businessの内訳は未確認です。Metaの本人確認を通過し、開発者アプリ画面へのアクセスが復旧しました。既存のAnna用アプリは読み取り確認のみで、権限・認証情報を変更していません。「Moco SNS Automation」をビジネスポートフォリオ「もこちゃん」に本人が新規作成しました。MetaアプリIDは1150847227441767、Instagram用クライアントIDは2011482642896301です。本人承認後、基本情報とInsightsの読取2権限を追加し、mocochan85のテスター招待も本人承認済みです。標準の認証リンクは投稿/DMを含む5権限を要求したため、scopeを承認済みの2権限へ限定しました。新しい読み取り認証からトークン生成を確認しました。Macへの保存・接続先ID照合は未完了です。
-4. 本人のパスワード再設定・通常ログインを再確認し、新しい読み取り2権限の認証からMetaのトークン生成まで進みました。現在はMac内フォーム `python3 -m moco secret-import instagram` への貼り付け・Keychain保存待ちです。保存前にAPI接続済みと扱わないでください。秘密値はURL/ファイル/ログへ書かず、既存認証の上書きを拒否します。最初の保存フォームはChromeがOrigin:nullを送るため拒否され、same-originポリシーへの修正を架空値で実ブラウザ検証しました。修正版への本人再貼り付け待ちです。Host/Origin/CSRFの照合は維持しています。Swiftキャッシュの実パス固定を修正し、再ビルドと既存YouTube認証の継続を確認済みです。
+3. YouTubeの読取OAuth・ID固定・3本の実測照合は完了。Instagram/ThreadsのMeta接続を進める。Instagramは本人ログインと自分の編集画面・プロフェッショナルダッシュボードを確認済みです。Professionalは確認でき、Creator/Businessの内訳は未確認です。Metaの本人確認を通過し、開発者アプリ画面へのアクセスが復旧しました。既存のAnna用アプリは読み取り確認のみで、権限・認証情報を変更していません。「Moco SNS Automation」をビジネスポートフォリオ「もこちゃん」に本人が新規作成しました。MetaアプリIDは1150847227441767、Instagram用クライアントIDは2011482642896301です。本人承認後、基本情報とInsightsの読取2権限を追加し、mocochan85のテスター招待も本人承認済みです。標準の認証リンクは投稿/DMを含む5権限を要求したため、scopeを承認済みの2権限へ限定しました。新しい読み取り認証からトークン生成を確認しました。MacのKeychain保存・本人ID照合・既存リール3本のInsights実取得が完了しました。
+4. Instagramの認証は完了しました。詳細は `docs/reports/2026-10-19-instagram-connection.md`。Graph API v26.0、本人ユーザー名とテスターIDの一致、Keychain保存、既存リール3本でviews/reach/likes/comments/saved/sharesを実取得済みです。`/me/permissions` はHTTP 400で一覧未取得です。このMacの6時間更新対象へ追加しましたが、Instagramの常駐実測成功は次周期待ちです。非公開Insights数値はGitHubへ送信しません。トークンの期限・更新は未確認/未実装です。保存フォームのChrome Origin問題は修正・実ブラウザ検証済みです。
 5. 詳細Analytics、Metaトークン更新、公開アダプタを段階導入。公開前に本人確認。
 
 未確定のMeta権限名・Graph API版・利用上限を断定しないでください。developerサイトの一部はこの調査で取得できず、公式Meta Postmanコレクションを参照しています。
