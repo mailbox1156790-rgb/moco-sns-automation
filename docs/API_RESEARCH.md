@@ -17,7 +17,7 @@ Macの認証はデスクトップ用OAuthクライアント、PKCE、state照合
 
 ## Instagramリール
 
-本人指定のURLは https://www.instagram.com/mocochan85/ 。本人ログイン後のプロフェッショナルダッシュボードを確認し、Professionalであることは確認済みです。Creator/Businessの内訳とAPI同意・ID照合は未確認です。Meta本人確認後、開発者アプリ画面へのアクセス復旧を確認しました。専用アプリを本人が作成し、読取2権限追加・テスター招待の本人承認まで完了しました。APIログイン・同意中です（2026-10-19の画面観測）。
+本人指定のURLは https://www.instagram.com/mocochan85/ 。本人ログイン後のプロフェッショナルダッシュボードを確認し、Professionalであることは確認済みです。Creator/Businessの内訳とAPI同意・ID照合は未確認です。Meta本人確認後、開発者アプリ画面へのアクセス復旧を確認しました。専用アプリを本人が作成し、読取2権限追加・テスター招待の本人承認まで完了しました。再設定後の新しい認証からトークン生成まで確認し、Macへの保存・API照合待ちです（2026-10-19の画面観測）。
 Instagram API with Instagram LoginはProfessionalアカウント向けで、Facebook Pageの接続を必須にしない経路です。基本・公開権限は `instagram_business_basic` と `instagram_business_content_publish`。Facebook Login用の権限と混ぜません。[Meta公式Instagram Loginコレクション](https://www.postman.com/meta/instagram/folder/6raa77c/instagram-api-with-instagram-login)
 
 リール公開にはメディアコンテナ作成、処理状態確認、`media_publish`、返されたmedia IDの再取得を組み合わせます。Meta公式コレクションはFacebook Login経路の公開例も提供しています。経路ごとにホスト・トークン・権限が異なるため、例をそのまま別経路へ流用しません。[Meta公式リール公開例](https://www.postman.com/meta/instagram/request/gabnx7r/publish-reel)

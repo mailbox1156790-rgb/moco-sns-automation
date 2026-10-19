@@ -12,7 +12,13 @@ do {
               ["youtube", "instagram", "threads"].contains(account) else { fail() }
         let query: [String: Any] = [kSecClass as String: kSecClassGenericPassword,
           kSecAttrService as String: "jp.moco.sns-automation", kSecAttrAccount as String: account]
-        if mode == "secret-set" {
+        if mode == "secret-add" {
+            guard let value = args["value"] as? String else { fail() }
+            var add = query
+            add[kSecValueData as String] = Data(value.utf8)
+            add[kSecAttrAccessible as String] = kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly
+            guard SecItemAdd(add as CFDictionary, nil) == errSecSuccess else { fail() }
+        } else if mode == "secret-set" {
             guard let value = args["value"] as? String else { fail() }
             let update = [kSecValueData as String: Data(value.utf8)]
             let status = SecItemUpdate(query as CFDictionary, update as CFDictionary)

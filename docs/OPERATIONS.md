@@ -86,7 +86,7 @@ Mac側が `oauth_authorization_timed_out` なら新しい認証を開始しま�
 このMacではInstagramの本人ログインとプロフェッショナルダッシュボードを確認済みです。Creator/Businessの内訳は未確認です。Metaの本人確認を通過し、開発者アプリ画面へアクセスできることを確認しました。専用アプリ「Moco SNS Automation」は本人が作成済み。本人承認後に `instagram_business_basic` と `instagram_business_manage_insights` の2権限だけ追加し、mocochan85のInstagramテスター招待も本人が承認しました。既存Anna用アプリを編集していません。公式Instagramで本人ログイン・読み取り同意を進め、トークンをKeychainへ保存後にAPIのID照合を行います。Metaの標準生成リンクは投稿/DMを含む5権限を要求したため、認証URLのscopeを承認済みの2権限へ絞りました。認証URLやトークンを報告へ貼らないでください。コードや画面の認証URLをGitHubへ貼らないでください。
 Threadsはプロフィール→共有→リンクをコピーでURLを確認します。
 
-Instagramの本人ログインで接続エラーが出たため、現在は本人のパスワード再設定待ちです。[公式再設定ページ](https://www.instagram.com/accounts/password/reset/)で `mocochan85` を指定し、登録メール/SMSに届く案内を本人が操作してください。新しいパスワードの入力・確認・確定は本人が行い、チャットやGitHubへ貼りません。再設定後にMacで公式ログインを確認し、必要なら新しい読み取り認証を開始します。古い認証URLや復旧リンクは再利用・共有しません。
+本人がパスワードを再設定し、mocochan85での通常ログインを再確認しました。古い認証URLを使わず、読み取り2権限に限定した新しい認証を開始し、Metaの「トークンが生成されました」まで確認しています。新しいパスワードや復旧リンクは取得・保存していません。
 Meta Developer側のアプリ作成・本人ログイン・同意・必要な審査は本人操作です。現在は自動化していません。
 必要な読取権限・API版を公式画面で確認後、トークンをMacの非表示入力からKeychainへ保存します。
 
@@ -96,6 +96,16 @@ python3 -m moco secret-set threads
 python3 -m moco account instagram
 python3 -m moco account threads
 ```
+
+Meta画面のトークンをターミナルへ貼らずに保存する場合は、Macで次を実行します。
+
+```sh
+python3 -m moco secret-import instagram
+```
+
+表示された `http://127.0.0.1:ポート/` をこのMacのブラウザで開き、Metaの生成画面からコピーしたトークンを非表示欄へ貼り付けます。フォームは最大60分だけ待ち受け、1回保存すると終了します。トークンをURL、ファイル、ログへ書きません。Host・Origin・CSRF・入力サイズを検証し、CSPとno-storeを設定しています。HTTPはMacのループバック内だけに使用し、外部APIのTLS証明書検証は引き続き有効です。
+
+このフォームはKeychainへ新規追加するだけで、既存レコードを上書きしません。既存レコードがある場合は保存を拒否します。保存成功とAPI接続確認は別で、保存後にアカウントIDを照合します。GitHub指示からこの認証コマンドを起動する機能は追加していません。
 
 Instagramは確認済みのGraph API版を `config/local.json` の `accounts.instagram.api_version` に指定するまで接続を拒否します。
 各媒体の確認済み `account_id` と `owner_confirmed: true` も同ファイルに設定します。設定に秘密値は書きません。
@@ -145,5 +155,8 @@ Macの電源・ネット接続・ログインセッションが必要です。�
 macOSのバックグラウンド処理はDocumentsフォルダにアクセスできないため、`scripts/install_runtime.py` が必要なコードを `~/Library/Application Support/MocoSNS/releases/コードハッシュ/` へ配置します。
 launchdはこの固定コピーを実行します。GitHubやクラウド側の編集は自動的に実行コードへ反映しません。変更をMacで確認・テスト後に再度installerを実行します。
 共有データは同フォルダの `data/`、個別設定は `local-settings.json`。チェックアウトの `var` と `config/local.json` からシンボリックリンクで参照します。
+Mac内フォームのReferrer-Policyは `same-origin` とします。ChromeのPOSTでOriginを維持しつつ、他オリジンへRefererを送りません。`no-referrer` ではOriginがnullとなり厳格な照合で拒否されることを実ブラウザで確認しました。Host/Origin/CSRFを緩めて対処しないでください。
+
+Swiftのコンパイルキャッシュは共有データ内の `swift-cache-canonical/` の実パスに固定します。PCHが古いリリースのパスを記憶して再ビルドできなくなる問題を解消し、以前のキャッシュは保持しています。
 移行前のデータはチェックアウト内の `work/var-before-runtime-*` に保持します。DBはSQLiteバックアップAPIでコピーし、元を削除しません。
 登録・更新はMacでのみ行います。フルディスクアクセスの付与やOSの保護設定変更は行っていません。

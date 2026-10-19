@@ -20,6 +20,10 @@ class Secrets:
     def set(self, platform, value):
         native_call("secret-set", {"account": platform, "value": value}, self.root)
 
+    def add(self, platform, value):
+        # SecItemAdd fails if the credential already exists; never overwrite it.
+        native_call("secret-add", {"account": platform, "value": value}, self.root)
+
 
 class AccountAPI:
     """Read-only official API adapters. Publishing is intentionally absent in phase 1."""

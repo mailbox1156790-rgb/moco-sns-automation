@@ -20,7 +20,10 @@ def native(root=ROOT):
     source = root / "scripts/native.swift"
     if not binary.exists() or binary.stat().st_mtime < source.stat().st_mtime:
         binary.parent.mkdir(parents=True, exist_ok=True)
-        cache = root / "var/swift-cache"
+        # Clang PCH embeds the cache's absolute path. Runtime releases and the
+        # checkout share var via symlinks, so use one canonical cache directory.
+        # Keep the old alias-dependent cache intact for recovery.
+        cache = (root / "var/swift-cache-canonical").resolve()
         cache.mkdir(exist_ok=True)
         env = dict(os.environ, CLANG_MODULE_CACHE_PATH=str(cache), SWIFT_MODULECACHE_PATH=str(cache))
         temporary = binary.with_suffix(".tmp")

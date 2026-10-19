@@ -26,6 +26,7 @@ def main():
     p = sub.add_parser("account"); p.add_argument("platform", choices=["youtube", "instagram", "threads"])
     p = sub.add_parser("collect"); p.add_argument("platform", choices=["youtube", "instagram", "threads"]); p.add_argument("--remote-id", required=True)
     p = sub.add_parser("secret-set"); p.add_argument("platform", choices=["instagram", "threads"])
+    p = sub.add_parser("secret-import"); p.add_argument("platform", choices=["instagram", "threads"])
     p = sub.add_parser("auth-youtube"); p.add_argument("--client-file", required=True)
     args = parser.parse_args()
     cfg, store = settings(), Store()
@@ -84,6 +85,10 @@ def main():
                 store.db.execute("INSERT INTO metrics(post_id,source,collected_at,payload) VALUES(?,?,?,?)", (row["id"], result["source"], result["collected_at"], canonical(result)))
                 store.db.commit()
                 atomic_json(store.var / "reports" / f"metrics-{row['id']}.json", result)
+        elif args.action == "secret-import":
+            from .token_import import receive_token
+            result = receive_token(args.platform)
+            atomic_json(store.var / "reports" / ("token-import-" + args.platform + ".json"), result)
         elif args.action == "secret-set":
             secret = getpass.getpass("MacのKeychainに保存するアクセストークン（非表示）: ")
             if not secret.strip():

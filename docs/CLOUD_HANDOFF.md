@@ -13,7 +13,7 @@ Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも
 YouTubeは本人所有の `https://www.youtube.com/@MOCOchannel/shorts`。読み取りOAuth後にチャンネルID `UCjcZcz7chD2o6hu4ZUZSA8Q` の一致も確認済みです。
 
 Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
-自動テスト50件成功。YouTubeの公開済みShorts 3本で公式APIの実測を取得し、常駐処理での更新も成功しました。新規公開は0件です。
+自動テスト59件成功。YouTubeの公開済みShorts 3本で公式APIの実測を取得し、常駐処理での更新も成功しました。新規公開は0件です。
 本人のGitHub認証とpush/Issue権限を確認し、ソースと報告をmainへpush済みです。
 [実Issue #1](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1)をMacで処理し、[実返信](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109)とローカル実行記録を照合済みです。
 Mac常駐処理が[実Issue #2](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2)を自動受信し、実測0件の分析結果を返信したことも確認しました（手動tickなし）。120秒間隔で受信します。
@@ -49,8 +49,8 @@ YouTubeの最初の認証はMacの5分タイムアウトで終了しました。
 
 1. 優先テーマ・投稿頻度/時刻の本人確認。YouTube所有は本人確認済み、Threads URLも受領済み。
 2. クラウド側で定型Issueを作成する場合、作者がMacで信頼設定済みかを確認。別の作者なら本人に確認してから追加。
-3. YouTubeの読取OAuth・ID固定・3本の実測照合は完了。Instagram/ThreadsのMeta接続を進める。Instagramは本人ログインと自分の編集画面・プロフェッショナルダッシュボードを確認済みです。Professionalは確認でき、Creator/Businessの内訳は未確認です。Metaの本人確認を通過し、開発者アプリ画面へのアクセスが復旧しました。既存のAnna用アプリは読み取り確認のみで、権限・認証情報を変更していません。「Moco SNS Automation」をビジネスポートフォリオ「もこちゃん」に本人が新規作成しました。MetaアプリIDは1150847227441767、Instagram用クライアントIDは2011482642896301です。本人承認後、基本情報とInsightsの読取2権限を追加し、mocochan85のテスター招待も本人承認済みです。標準の認証リンクは投稿/DMを含む5権限を要求したため、scopeを承認済みの2権限へ限定しました。現在は公式Instagramで本人ログイン・同意待ち。APIトークン保存・接続先ID照合は未完了です。
-4. Instagramのログイン画面に接続エラーが出て、本人がパスワード再設定を希望しました。現在は本人の公式再設定手続き待ちです。本人確認欄が空白になる状態も観測しましたが、原因を断定しないでください。パスワード変更・コード入力は本人操作のみ。完了後に新しい読み取り認証を開始し、古い認証URLを再利用・共有しないでください。詳細はInstagram状況報告を参照。
+3. YouTubeの読取OAuth・ID固定・3本の実測照合は完了。Instagram/ThreadsのMeta接続を進める。Instagramは本人ログインと自分の編集画面・プロフェッショナルダッシュボードを確認済みです。Professionalは確認でき、Creator/Businessの内訳は未確認です。Metaの本人確認を通過し、開発者アプリ画面へのアクセスが復旧しました。既存のAnna用アプリは読み取り確認のみで、権限・認証情報を変更していません。「Moco SNS Automation」をビジネスポートフォリオ「もこちゃん」に本人が新規作成しました。MetaアプリIDは1150847227441767、Instagram用クライアントIDは2011482642896301です。本人承認後、基本情報とInsightsの読取2権限を追加し、mocochan85のテスター招待も本人承認済みです。標準の認証リンクは投稿/DMを含む5権限を要求したため、scopeを承認済みの2権限へ限定しました。新しい読み取り認証からトークン生成を確認しました。Macへの保存・接続先ID照合は未完了です。
+4. 本人のパスワード再設定・通常ログインを再確認し、新しい読み取り2権限の認証からMetaのトークン生成まで進みました。現在はMac内フォーム `python3 -m moco secret-import instagram` への貼り付け・Keychain保存待ちです。保存前にAPI接続済みと扱わないでください。秘密値はURL/ファイル/ログへ書かず、既存認証の上書きを拒否します。最初の保存フォームはChromeがOrigin:nullを送るため拒否され、same-originポリシーへの修正を架空値で実ブラウザ検証しました。修正版への本人再貼り付け待ちです。Host/Origin/CSRFの照合は維持しています。Swiftキャッシュの実パス固定を修正し、再ビルドと既存YouTube認証の継続を確認済みです。
 5. 詳細Analytics、Metaトークン更新、公開アダプタを段階導入。公開前に本人確認。
 
 未確定のMeta権限名・Graph API版・利用上限を断定しないでください。developerサイトの一部はこの調査で取得できず、公式Meta Postmanコレクションを参照しています。
