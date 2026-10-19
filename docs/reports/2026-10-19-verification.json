@@ -1,0 +1,74 @@
+{
+  "date_jst": "2026-10-19",
+  "mode": "draft_only",
+  "unit_tests_passed": 30,
+  "render": {
+    "id": "moco-7db4788a583f4b6f",
+    "width": 1080,
+    "height": 1920,
+    "duration_seconds": 19.3,
+    "video_codec": "h264",
+    "audio_codec": "aac",
+    "state": "awaiting_review",
+    "remote_id": null,
+    "remote_url": null
+  },
+  "accounts": {
+    "instagram_profile_url": "https://www.instagram.com/mocochan85/",
+    "threads_profile_url": "https://www.threads.com/@mocochan85",
+    "youtube_profile_url": "https://www.youtube.com/@MOCOchannel/shorts",
+    "youtube_owner_confirmed": false,
+    "sns_oauth_verified": false
+  },
+  "github": {
+    "repository": "mailbox1156790-rgb/moco-sns-automation",
+    "authenticated": true,
+    "keychain_storage_verified": true,
+    "write_access_verified": true,
+    "foreground": {
+      "number": 1,
+      "issue_id": 5921977588,
+      "url": "https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1",
+      "command_id": "c1f465b7-73c5-4bf1-abe8-e3beb99e208b",
+      "action": "status",
+      "matching_comment_count": 1,
+      "verified": true,
+      "comment_url": "https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109",
+      "ledger_status": {
+        "status": "reported",
+        "comment_id": 6264852109
+      }
+    },
+    "background": {
+      "number": 2,
+      "issue_id": 5921989174,
+      "url": "https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2",
+      "command_id": "4a61fd97-cd6c-4693-9fe3-f6e48b922fdf",
+      "action": "analyze",
+      "verified": true,
+      "matching_comment_count": 1,
+      "comment_url": "https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2#issuecomment-6264893882",
+      "comment_created_at": "2026-10-19T10:16:02Z",
+      "ledger_status": "reported",
+      "result": {
+        "measured_samples": 0,
+        "public": false,
+        "report": "var/reports/analysis.json"
+      },
+      "worker_checked_at": "2026-10-19T10:16:00.879062+00:00",
+      "worker_github": {
+        "status": "ok",
+        "commands_total": 2,
+        "public": false
+      }
+    }
+  },
+  "deployment": {
+    "source_sha256": "23200c936587fa768af61d35f5929c73767e7886e5848ed1f70c00e33e5fbcf7",
+    "github_polling": true,
+    "interval_seconds": 120
+  },
+  "measured_sns_metrics_samples": 0,
+  "live_posting_implemented": false,
+  "public_posts_created": 0
+}

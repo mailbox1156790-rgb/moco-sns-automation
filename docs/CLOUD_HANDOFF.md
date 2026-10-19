@@ -9,11 +9,14 @@
 
 GitHubの指示を本人のMacで受け、制作→本人確認→予約/公開→実測→分析→改善→GitHub報告を段階導入します。
 現在は下書き専用。公開用APIは未実装です。初回の本人確認を省略しないでください。
-Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsは未確認。
+Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも本人指定の `https://www.threads.com/@mocochan85` を受領し設定済み（共有パラメータは除去）。Threadsの本文・APIアカウント照合は未実施。
 YouTubeの指定は `https://www.youtube.com/@MOCOchannel/shorts`、公開ページでハンドルを確認済み。本人の所有/OAuth照合はまだです。
 
 Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
 自動テスト30件成功。Macで画像/動画も確認しました。架空のSNS実績を作成していません。
+本人のGitHub認証とpush/Issue権限を確認し、ソースと報告をmainへpush済みです。
+[実Issue #1](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1)をMacで処理し、[実返信](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109)とローカル実行記録を照合済みです。
+Mac常駐処理が[実Issue #2](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2)を自動受信し、実測0件の分析結果を返信したことも確認しました（手動tickなし）。120秒間隔で受信します。
 
 ## クラウドから行えること
 
@@ -23,6 +26,7 @@ Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macの�
 
 Issueには `moco:command` ラベルと厳密なJSON本文が必要です。新しいUUIDを指示ごとに使います。
 本人が信頼した数値GitHub IDで作成/編集したIssueしかMacは実行しません。クラウド側の自動アカウントや別のbotを勝手に信頼設定へ追加しないでください。
+現在Macで登録した本人の共同作業アカウントは `makoxx0815-tech` です。リポジトリ所有者やクラウド側の別アカウントも自動では信頼されません。
 公開・承認・再開・シェル・認証・git pullの指示は実行されません。
 
 ## Macに残るもの
@@ -39,8 +43,8 @@ GitHubからコードを自動更新しません。Macで差分を確認・テ�
 
 ## 次の優先事項
 
-1. GitHub認証と実Issueによる往復確認（初期報告の最新状況を確認）。
-2. Threads URL・YouTube所有・方針/時刻の本人確認。
+1. YouTube所有・方針/時刻の本人確認。Threads URLは本人から受領済み。
+2. クラウド側で定型Issueを作成する場合、作者がMacで信頼設定済みかを確認。別の作者なら本人に確認してから追加。
 3. Google/Metaの読取OAuth→アカウントID固定→既存投稿ID/URL・実測照合。
 4. 詳細Analytics、Metaトークン更新、公開アダプタを段階導入。公開前に本人確認。
 

@@ -16,7 +16,7 @@
 |媒体|投稿先|確認状況|
 |---|---|---|
 |Instagram|https://www.instagram.com/mocochan85/|本人からURL受領、公開プロフィール確認。API権限未確認|
-|Threads|未確認|本人のプロフィールURL待ち|
+|Threads|https://www.threads.com/@mocochan85|本人からURL受領。API権限未確認|
 |YouTube Shorts|https://www.youtube.com/@MOCOchannel/shorts|MOCO channel / @MOCOchannel を公開ページで確認。本人の所有・OAuth照合待ち|
 
 ## ローカルで試す
@@ -40,7 +40,8 @@ python3 -m moco status
 本人の数値GitHub ID、Issueの作者・最終編集者、ラベル、定型JSON、作成コマンドUUIDを検証します。
 許可する指示は `draft` / `render` / `status` / `analyze` / `stop` だけです。
 任意コマンド、公開、承認、再開、認証、リポジトリ更新は受け付けません。
-実行結果は元Issueのコメントへ返信します。現在のMac常駐処理はローカル下書き確認のみで、GitHubポーリングは認証・信頼ID設定後に有効化します。
+実行結果は元Issueのコメントへ返信します。このMacでは本人認証・数値ID設定・実Issueの往復を検証し、120秒間隔のGitHub受信を常駐処理に登録しました。
+SNS公開用APIは未実装です。接続や検証の詳細は初期報告を参照してください。
 
 ## 停止
 
