@@ -1,0 +1,64 @@
+{
+  "timezone": "Asia/Tokyo",
+  "mode": "draft_only",
+  "schedule": {
+    "enabled": false,
+    "times": [],
+    "max_posts_per_day": 1
+  },
+  "policy": {
+    "status": "provisional_pending_owner",
+    "themes": [
+      "AI動画制作",
+      "SNS運用の実用情報",
+      "クリエイターの働き方",
+      "旅・日常の体験"
+    ],
+    "tone": "短い問いかけ、具体例、親しみのある会話調。体験を創作しない。",
+    "audience": "AI動画・SNSに関心のある初心者〜個人クリエイター（仮説）",
+    "rules": [
+      "収益を保証しない",
+      "事実と体験の根拠を記録",
+      "素材・音楽の権利を確認",
+      "本人の体験を捏造しない",
+      "医療・美容等は本人と内容を個別確認"
+    ]
+  },
+  "accounts": {
+    "youtube": {
+      "profile_url": "https://www.youtube.com/@MOCOchannel/shorts",
+      "handle": "@MOCOchannel",
+      "account_id": null,
+      "owner_confirmed": false
+    },
+    "instagram": {
+      "profile_url": "https://www.instagram.com/mocochan85/",
+      "account_id": null,
+      "owner_confirmed": false,
+      "api_version": null
+    },
+    "threads": {
+      "profile_url": null,
+      "account_id": null,
+      "owner_confirmed": false
+    }
+  },
+  "github": {
+    "repository": "mailbox1156790-rgb/moco-sns-automation",
+    "trusted_actor_ids": [],
+    "command_label": "moco:command",
+    "poll_seconds": 120,
+    "max_command_age_days": 7,
+    "report_content": false
+  },
+  "retry": {
+    "max_attempts": 3,
+    "base_seconds": 30
+  },
+  "render": {
+    "width": 1080,
+    "height": 1920,
+    "fps": 30,
+    "voice": "Kyoko"
+  }
+}

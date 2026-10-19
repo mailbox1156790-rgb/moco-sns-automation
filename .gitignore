@@ -1,0 +1,12 @@
+/var
+work/
+.venv/
+__pycache__/
+*.pyc
+.DS_Store
+.env*
+*token*.json
+*secret*.json
+config/local.json
+*.sqlite*
+*.log
