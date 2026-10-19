@@ -6,6 +6,21 @@ from .accounts import AccountAPI
 from .core import SafeError, atomic_json, canonical, now
 
 
+def save_owned_measurement(store, platform, remote_id, measurement):
+    """Store an ownership-verified result without duplicating a newly created post."""
+    rows = store.db.execute("SELECT id,state FROM posts WHERE platform=? AND remote_id=?", (platform, remote_id)).fetchall()
+    if len(rows) > 1 or (rows and rows[0]["state"] != "published"):
+        raise SafeError("remote_post_publication_must_be_reconciled_first")
+    row = store.get(rows[0]["id"]) if rows else store.add(platform, {"existing_remote_id": remote_id})
+    store.db.execute("UPDATE posts SET state='published',remote_id=?,remote_url=? WHERE id=?",
+                     (remote_id, measurement["remote_url"], row["id"]))
+    store.db.execute("INSERT INTO metrics(post_id,source,collected_at,payload) VALUES(?,?,?,?)",
+        (row["id"], measurement["source"], measurement["collected_at"], canonical(measurement)))
+    store.db.commit()
+    atomic_json(store.var / "reports" / ("metrics-" + row["id"] + ".json"), measurement)
+    return row["id"]
+
+
 def refresh_metrics(store, cfg, client_factory=AccountAPI):
     """Called while the worker holds its lock. Never creates or publishes posts."""
     job = cfg.get("metrics_collection", {})

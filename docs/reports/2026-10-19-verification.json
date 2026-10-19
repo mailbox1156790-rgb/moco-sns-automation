@@ -1,7 +1,7 @@
 {
   "date_jst": "2026-10-19",
   "mode": "draft_only",
-  "unit_tests_passed": 59,
+  "unit_tests_passed": 80,
   "render": {
     "id": "moco-7db4788a583f4b6f",
     "width": 1080,
@@ -94,16 +94,17 @@
       "repeat_call_status": "reported",
       "outbox_status": "reported",
       "public_measurements_count": 3,
-      "sns_posts_created": 0
+      "sns_posts_created": 0,
+      "currently_enabled": false
     }
   },
   "deployment": {
-    "source_sha256": "d6598cb54d3e6e13dfce16bc785c60d8135c781272ba3de14e0650fa88daad9c",
+    "source_sha256": "710775ebd93cc644f9b26b70a93a60e19cdc959d3bcdea54e4284064d82c33c8",
     "github_polling": true,
     "interval_seconds": 120
   },
   "measured_sns_metrics_samples": 9,
-  "live_posting_implemented": false,
+  "live_posting_implemented": true,
   "public_posts_created": 0,
   "youtube_oauth": {
     "status": "connected",
@@ -127,8 +128,6 @@
       "next_due_at": "2026-10-19T16:47:48.277750+00:00"
     },
     "enabled_platforms_on_this_mac": [
-      "youtube",
-      "instagram",
       "threads"
     ]
   },
@@ -361,6 +360,47 @@
         ]
       }
     ],
+    "public": false
+  },
+  "live_posting_platforms": [
+    "threads_text_only"
+  ],
+  "live_posting_api_verified": false,
+  "current_operating_scope": {
+    "production_platforms": [
+      "threads"
+    ],
+    "video_enabled": false,
+    "paused_posting_platforms": [
+      "youtube",
+      "instagram"
+    ],
+    "owner_requested_threads_only": true,
+    "previous_assets_and_credentials_preserved": true
+  },
+  "active_analysis_measured_posts": 3,
+  "threads_publication": {
+    "implemented": true,
+    "enabled": false,
+    "owner_permission_addition_approved": false,
+    "publish_token_saved": false,
+    "first_content_and_time_approved": false,
+    "automatic_scheduling_enabled": false,
+    "dedicated_keychain_account": "threads_publish",
+    "public_posts_created": 0,
+    "post_replay_on_unknown_outcome": false,
+    "unit_tested": true,
+    "official_api_post_verified": false,
+    "dedicated_helper_compiled_on_mac": true,
+    "legacy_credential_access_rejected_by_publish_helper": true,
+    "existing_read_helper_preserved": true,
+    "read_identity_reverified_after_helper_separation": true
+  },
+  "current_threads_draft": {
+    "id": "moco-5ab9604cc71245a4",
+    "format": "text_only",
+    "characters": 170,
+    "review_digest": "04e4ef3e2cda1c92ab8e3e89b9d08374d0ac999c7dcdf1c098df8b154b4e6808",
     "public": false
   }
 }

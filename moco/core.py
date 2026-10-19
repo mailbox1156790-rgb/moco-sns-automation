@@ -57,9 +57,18 @@ def settings(root=ROOT):
                 else:
                     a[k] = v
         merge(cfg, json.loads(local.read_text()))
-    if cfg["mode"] != "draft_only":
-        raise SafeError("This release supports draft_only mode. Live publishing remains locked.")
+    if cfg["mode"] not in {"draft_only", "threads_text"}:
+        raise SafeError("unsupported_operation_mode")
     return cfg
+
+
+def production_allowed(cfg, platform, video=False):
+    policy = cfg.get("production", {})
+    platforms = policy.get("platforms", ["threads", "instagram", "youtube"])
+    if (not isinstance(platforms, list) or not platforms
+            or any(p not in {"threads", "instagram", "youtube"} for p in platforms)):
+        raise SafeError("production_settings_invalid")
+    return platform in platforms and (not video or policy.get("video_enabled", True) is True)
 
 
 class Store:
@@ -161,7 +170,8 @@ class Store:
         row = self.get(post_id)
         p = self.asset_dir(post_id)
         files = {}
-        for name in ["draft.json", "cover.png", "video.mp4"]:
+        names = ["draft.json", "post.txt"] if row["platform"] == "threads" else ["draft.json", "cover.png", "video.mp4"]
+        for name in names:
             file = p / name
             if not file.is_file():
                 raise SafeError("Render the draft before reviewing it.")
@@ -169,14 +179,16 @@ class Store:
         try:
             if canonical(json.loads((p / "draft.json").read_text())) != row["content"]:
                 raise SafeError("Rendered content is outdated. Render the current revision.")
+            if row["platform"] == "threads" and (p / "post.txt").read_text() != json.loads(row["content"])["caption"]:
+                raise SafeError("threads_text_artifact_does_not_match_draft")
         except (ValueError, OSError):
             raise SafeError("Rendered draft manifest is invalid.") from None
         return digest({"revision": row["revision"], "files": files})
 
     def revise(self, post_id, content):
         row = self.get(post_id)
-        if row["state"] == "published":
-            raise SafeError("Published records are immutable. Create a new draft.")
+        if row["state"] not in {"awaiting_review", "approved", "scheduled", "failed", "simulated"}:
+            raise SafeError("published_or_inflight_record_is_immutable")
         validate_draft(content)
         fp = digest({"platform": row["platform"], "content": content})
         duplicate = self.db.execute("SELECT id FROM posts WHERE fingerprint=? AND id<>?", (fp, post_id)).fetchone()

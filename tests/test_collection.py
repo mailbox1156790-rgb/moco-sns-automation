@@ -4,7 +4,7 @@ import tempfile
 import unittest
 from unittest.mock import patch
 
-from moco.collection import refresh_metrics
+from moco.collection import refresh_metrics, save_owned_measurement
 from moco.core import SafeError, Store, settings
 
 
@@ -96,3 +96,18 @@ class CollectionTests(unittest.TestCase):
         self.assertEqual(result["updated_posts"], 0)
         self.assertEqual(self.store.db.execute("SELECT count(*) FROM metrics").fetchone()[0], 0)
         self.assertEqual(self.run_job("2026-10-19T00:02:00+00:00")["status"], "waiting")
+
+    def test_manual_collection_reuses_an_already_verified_created_post(self):
+        measurement = {"remote_url": "https://www.youtube.com/shorts/fixture-video", "source": "fixture",
+                       "collected_at": "2026-10-19T00:00:00+00:00", "metrics": {"views": 0}}
+        post_id = save_owned_measurement(self.store, "youtube", "fixture-video", measurement)
+        self.assertEqual(post_id, self.row["id"])
+        self.assertEqual(len(self.store.summary()), 1)
+
+    def test_collection_cannot_bypass_new_publication_body_and_url_verification(self):
+        self.store.db.execute("UPDATE posts SET state='verification_required' WHERE id=?", (self.row["id"],))
+        self.store.db.commit()
+        with self.assertRaisesRegex(SafeError, "remote_post_publication_must_be_reconciled_first"):
+            save_owned_measurement(self.store, "youtube", "fixture-video", {})
+        self.assertEqual(self.store.get(self.row["id"])["state"], "verification_required")
+        self.assertEqual(self.store.db.execute("SELECT COUNT(*) FROM metrics").fetchone()[0], 0)

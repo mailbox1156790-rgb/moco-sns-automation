@@ -4,7 +4,7 @@ import os
 from pathlib import Path
 import subprocess
 
-from .core import ROOT, SafeError, atomic_json, now
+from .core import ROOT, SafeError, atomic_json, now, production_allowed
 
 
 def run(args, **kwargs):
@@ -15,9 +15,9 @@ def run(args, **kwargs):
         raise SafeError("local_media_tool_failed") from None
 
 
-def native(root=ROOT):
-    binary = root / "var/bin/moco-native"
-    source = root / "scripts/native.swift"
+def native(root=ROOT, publish_credential=False):
+    binary = root / ("var/bin/moco-threads-secrets" if publish_credential else "var/bin/moco-native")
+    source = root / ("scripts/threads_secrets.swift" if publish_credential else "scripts/native.swift")
     if not binary.exists() or binary.stat().st_mtime < source.stat().st_mtime:
         binary.parent.mkdir(parents=True, exist_ok=True)
         # Clang PCH embeds the cache's absolute path. Runtime releases and the
@@ -33,18 +33,31 @@ def native(root=ROOT):
 
 
 def native_call(mode, payload, root=ROOT):
-    return run([str(native(root)), mode], input=json.dumps(payload).encode()).stdout
+    return run([str(native(root, publish_credential=payload.get("account") == "threads_publish")), mode], input=json.dumps(payload).encode()).stdout
 
 
 def render(store, post_id, cfg):
     if store.stopped:
         raise SafeError("Stopped. Resume locally first.")
     row = store.get(post_id)
+    if not production_allowed(cfg, row["platform"], video=row["platform"] != "threads"):
+        raise SafeError("production_paused_by_owner")
     if row["state"] not in {"awaiting_review", "failed"}:
         raise SafeError("Rendering an approved draft is locked. Create a new draft for revisions.")
     data = json.loads(row["content"])
     assets = store.asset_dir(post_id)
     atomic_json(assets / "draft.json", data)
+    if row["platform"] == "threads":
+        if not data["caption"].strip() or len(data["caption"]) > 500:
+            raise SafeError("threads_plain_text_must_be_1_to_500_characters")
+        (assets / "post.txt").write_text(data["caption"])
+        store.db.execute("UPDATE posts SET state='awaiting_review',error_code=NULL,next_attempt=NULL,updated_at=? WHERE id=?", (now(), post_id))
+        store.event(post_id, "local_threads_text_prepared")
+        store.db.commit()
+        receipt = {"id": post_id, "format": "text_only", "characters": len(data["caption"]),
+                   "review_digest": store.bundle_digest(post_id), "public": False}
+        atomic_json(assets / "render-receipt.json", receipt)
+        return receipt
     for n, title in enumerate(data["slides"]):
         native_call("card", {"text": title, "output": str(assets / f"slide-{n}.png")}, store.root)
     (assets / "cover.png").write_bytes((assets / "slide-0.png").read_bytes())

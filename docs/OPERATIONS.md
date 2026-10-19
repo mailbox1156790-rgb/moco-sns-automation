@@ -2,6 +2,23 @@
 
 Macのチェックアウトで以下を実行します。クラウド側CodexのシェルはMacではありません。
 
+## 現在はThreadsの文章のみ
+
+本人指示により動画制作・Instagram/YouTube投稿を休止しています。以下に残した動画/他媒体の手順は以前の基盤の記録で、現在は実行しません。制作対象はthreadsのみ、video_enabledはfalseです。
+
+Threadsのrenderは原稿JSONとpost.txtの保存だけです。reviewで本文・確認ハッシュ・投稿先URL・固定IDを確認します。
+
+```sh
+python3 -m moco render moco-5ab9604cc71245a4
+python3 -m moco review moco-5ab9604cc71245a4
+```
+
+現在は読み取り接続のみです。専用アプリにthreads_content_publishを追加する本人確認・再認証後、`python3 -m moco secret-import threads_publish` で投稿用認証を別のKeychainキーへ保存し、本人IDを照合します。既存の読み取り認証は上書きしません。
+
+本文・投稿先・公開タイミングの本人承認後にだけ、Macのmodeをthreads_text、publishing.threads.enabledとpermission_owner_approvedをtrueにします。`approve-threads 管理ID --digest 確認ハッシュ --at nowまたは将来のISO時刻 --owner-confirmed` で承認記録を固定し、`publish-threads 管理ID --owner-confirmed` で公開します。これらはGitHubから呼べません。初回成功と投稿頻度/時刻の本人確認後にだけautomatic_schedulingをtrueにします。現在はすべて無効です。
+
+POST応答不明は再実行せずreconciliation_requiredで照合します。コンテナ待ち、受領済み投稿IDの結果待ちはGETだけで再確認できます。詳細は [Threads専用報告](reports/2026-10-19-threads-only.md)。
+
 ## 1. GitHub本人認証
 
 ```sh
@@ -125,13 +142,13 @@ APIで投稿の所有を照合してから、投稿ID・URL・取得時刻・指
 
 ### 実測値の定期更新
 
-このMacでは確認済みYouTube・Instagram・Threadsの登録済み投稿を6時間ごとに更新し、分析JSONも更新します。基本設定の `metrics_collection.enabled` はfalseで、Macの `config/local.json` で3媒体を有効にしています。各3件の前景実測を取得済みです。常駐取得成功はYouTubeで確認済み、Instagram/Threadsは次周期待ちです。
+このMacの現在の更新対象はThreadsの登録済み投稿だけで、6時間ごとに分析JSONも更新します。基本設定のmetrics_collection.enabledはfalse、Macのconfig/local.jsonでthreadsだけを有効にしています。過去に取得した他媒体の実測は保全しています。
 `interval_seconds: 21600`、`max_posts_per_run: 20`。対象は既に所有照合された `published` の投稿IDです。
 結果は `var/reports/metrics-collection.json`。取得失敗時は失敗を記録して次の周期を待ちます。停止中は実測の外部APIへ接続しません。
 
 ### GitHubへの実測自動報告
 
-完了した取得周期ごとに、固定した報告用Issueへ1件追記します。このMacの宛先は[Issue #3](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3)です。基本設定では無効で、秘密値を含まない `github.metrics_report_issue: {"number": 3, "id": 5922764913}` をMacの個別設定に置きます。
+以前のYouTube報告は現在無効です。以下は過去の実装記録です。完了した取得周期ごとに、固定した報告用Issueへ1件追記する仕組みを検証しました。このMacの宛先は[Issue #3](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3)です。基本設定では無効で、秘密値を含まない `github.metrics_report_issue: {"number": 3, "id": 5922764913}` をMacの個別設定に置きます。
 リポジトリ・Issue数値ID・作者の信頼を照合します。対象は公開状態と本人チャンネルを確認したYouTube動画の再生・高評価・コメント数のみ。非公開/限定公開動画や詳細Insights、認証情報、任意のAPIフィールドを送りません。
 
 送信記録は `var/reports/github-metrics-outbox.json`。送信前にpayloadを固定し、再実行時は保存したコメントIDを使います。送信結果が不明な場合はGETで同じマーカーを照合し、確認できなければ `verification_required` で止めます。自動POST再試行はしません。手動で送信記録を削除する前に、GitHubのコメントを照合してください。停止中はこの実測報告も送信しません。

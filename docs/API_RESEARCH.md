@@ -32,7 +32,9 @@ Threads用MetaアプリとOAuthを利用します。本人承認後、もこ専�
 
 通常は `/threads` でコンテナを作り、`/threads_publish` で公開してIDを照合します。テキスト作成時の `auto_publish_text=true` は即時公開を起こすため、下書き検証では呼びません。画像・動画の配信方法やURL公開の範囲は本人の素材運用を決めてから設計します。[Meta公式Threads公開フロー](https://www.postman.com/meta/threads/documentation/dht3nzz/threads-api?entity=request-34203612-f8bf85ba-a2a2-47f8-9183-f94cd3e9c9d3)
 
-長期トークンと更新エンドポイントが提供されています。公式コレクション例のexpires_inは5,184,000秒です。固定の無期限トークンとは扱わず、実際の有効期限と更新可否を確認します。この版はKeychainへの保存と読取APIの初期実装までで、更新自動化は未実装です。[Meta公式Threads認証例](https://www.postman.com/meta/threads/documentation/dht3nzz/threads-api?entity=request-34203612-74fb48b1-ad1a-480e-b200-4dcdb8126a2f)
+長期トークンと更新エンドポイントが提供されています。公式コレクション例のexpires_inは5,184,000秒です。固定の無期限トークンとは扱わず、実際の有効期限と更新可否を確認します。この版はKeychain保存・読取に加え、Threads文章用の二段階公開を実装・模擬検証しました。実公開と更新自動化は未検証/未実装です。[Meta公式Threads認証例](https://www.postman.com/meta/threads/documentation/dht3nzz/threads-api?entity=request-34203612-74fb48b1-ad1a-480e-b200-4dcdb8126a2f)
+
+Threads文章の公開処理は投稿用権限の本人確認待ちで無効です。コンテナ状態のGETと公開後の本文・URL・所有照合には [Meta公式サンプル](https://github.com/fbsamples/threads_api/blob/main/src/index.js) も参照しました。現在の対象はThreads文章のみで、画像・動画の公開は進めません。
 
 ## GitHub
 

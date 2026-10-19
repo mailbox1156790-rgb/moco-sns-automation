@@ -23,6 +23,7 @@ class Base(unittest.TestCase):
         self.root = Path(self.temp.name)
         self.store = Store(self.root)
         self.cfg = settings()
+        self.cfg["production"] = {"platforms": ["threads", "instagram", "youtube"], "video_enabled": True}
         self.cfg["github"]["trusted_actor_ids"] = [123]
 
     def tearDown(self):

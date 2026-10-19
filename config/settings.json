@@ -1,6 +1,17 @@
 {
   "timezone": "Asia/Tokyo",
   "mode": "draft_only",
+  "production": {
+    "platforms": ["threads"],
+    "video_enabled": false
+  },
+  "publishing": {
+    "threads": {
+      "enabled": false,
+      "permission_owner_approved": false,
+      "automatic_scheduling": false
+    }
+  },
   "schedule": {
     "enabled": false,
     "times": [],

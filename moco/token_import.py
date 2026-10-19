@@ -19,7 +19,7 @@ REFERRER_POLICY = "same-origin"
 
 class TokenIntake:
     def __init__(self, platform, writer):
-        if platform not in {"instagram", "threads"}:
+        if platform not in {"instagram", "threads", "threads_publish"}:
             raise SafeError("token_import_platform_invalid")
         self.platform, self.writer = platform, writer
         self.csrf = secrets.token_urlsafe(32)
@@ -53,6 +53,7 @@ class TokenIntake:
             "replaced_existing": False, "api_identity_verified": False, "public": False}
 
     def page(self):
+        label = "Threads投稿用トークン" if self.platform == "threads_publish" else "読み取りトークン"
         return '''<!doctype html><html lang="ja"><meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>もこ SNS 認証をMacへ保存</title>
@@ -60,11 +61,11 @@ class TokenIntake:
 input{box-sizing:border-box;width:100%;padding:14px;font-size:18px}button{padding:14px;margin-top:20px;font-size:18px}
 p{line-height:1.7}</style>
 <h1>もこ専用の認証をMacへ保存</h1><p>対象：''' + html.escape(self.platform) + '''</p>
-<p>Metaの公式画面で生成した、もこ専用アプリの読み取りトークンを貼り付けます。
+<p>Metaの公式画面で生成した、もこ専用アプリの''' + label + '''を貼り付けます。
 保存先はこのMacのKeychainです。既存の認証情報は上書きしません。</p>
 <form method="post" action="/import" autocomplete="off">
 <input type="hidden" name="csrf" value="''' + html.escape(self.csrf, quote=True) + '''">
-<label for="token">読み取りトークン（非表示）</label>
+<label for="token">''' + label + '''（非表示）</label>
 <input id="token" type="password" name="token" autocomplete="off" spellcheck="false" required minlength="20" maxlength="16384">
 <button type="submit">このMacのKeychainへ保存</button></form>
 <p>トークンをチャットやGitHubへ貼らないでください。保存後に接続先アカウントをAPIで確認します。</p></html>'''
