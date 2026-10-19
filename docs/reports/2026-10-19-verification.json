@@ -240,13 +240,21 @@
     "new_sns_posts_created": 0
   },
   "threads_connection": {
-    "status": "owner_login_pending_in_separate_in_app_browser",
+    "status": "owner_security_check_repeats_in_app_browser_safari_login_pending",
     "owner_wants_chrome_anna_login_preserved": true,
     "chrome_anna_logged_out": false,
     "public_post_texts_observed": 4,
     "api_identity_verified": false,
     "token_saved": false,
     "background_collection_enabled": false,
-    "new_sns_posts_created": 0
+    "new_sns_posts_created": 0,
+    "security_check_owner_reported_repeating": true,
+    "observed_security_check": "enter_displayed_characters",
+    "security_check_cause_verified": false,
+    "automated_captcha_solved": false,
+    "security_checks_bypassed": false,
+    "safari_owner_login_requested": true,
+    "safari_owner_login_verified": false,
+    "existing_instagram_api_reauthentication_required": false
   }
 }
