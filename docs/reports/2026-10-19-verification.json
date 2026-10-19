@@ -192,7 +192,9 @@
     ],
     "threads_tester_invitation_completion_verified": true,
     "threads_tester_invitation_accepted_by_owner": true,
-    "threads_tester_pending_removed_in_meta_ui": true
+    "threads_tester_pending_removed_in_meta_ui": true,
+    "threads_publish_permission_owner_approved": true,
+    "threads_publish_permission_ui_ready": true
   },
   "token_import": {
     "implemented": true,
@@ -382,7 +384,7 @@
   "threads_publication": {
     "implemented": true,
     "enabled": false,
-    "owner_permission_addition_approved": false,
+    "owner_permission_addition_approved": true,
     "publish_token_saved": false,
     "first_content_and_time_approved": false,
     "automatic_scheduling_enabled": false,
@@ -394,7 +396,8 @@
     "dedicated_helper_compiled_on_mac": true,
     "legacy_credential_access_rejected_by_publish_helper": true,
     "existing_read_helper_preserved": true,
-    "read_identity_reverified_after_helper_separation": true
+    "read_identity_reverified_after_helper_separation": true,
+    "official_permission_ui_ready": true
   },
   "previous_threads_draft": {
     "id": "moco-5ab9604cc71245a4",
@@ -449,5 +452,21 @@
       }
     ],
     "repository_brief_treated_as_publication_approval": false
+  },
+  "threads_publish_connection": {
+    "status": "official_permission_ready_waiting_owner_safari_token_save",
+    "permission_addition_owner_approved": true,
+    "app_id": "1150847227441767",
+    "requested_permissions": [
+      "threads_basic",
+      "threads_manage_insights",
+      "threads_content_publish"
+    ],
+    "keychain_account": "threads_publish",
+    "keychain_saved": false,
+    "api_identity_verified": false,
+    "publish_permission_api_verified": false,
+    "first_publication_approved": false,
+    "public_posts_created": 0
   }
 }

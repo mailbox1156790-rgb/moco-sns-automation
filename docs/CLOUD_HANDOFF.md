@@ -11,7 +11,7 @@ Mac側では3案の文章保存と文字のみのrenderを完了しました。�
 
 ## 現在の状態
 
-GitHubの信頼済み定型指示をMacで受信し、下書き制作・確認待ち管理・実測・分析・GitHub報告を実行する基盤が動いています。**現在はThreadsの文章投稿だけが対象です。動画制作・Instagram/YouTube投稿を再開しないでください。** Threads文章用公開APIは実装・模擬検証済みですが、投稿用権限と初回本文/日時の本人確認が未完了のため無効です。動作モードは `draft_only`、新規SNS公開は0件です。最新情報は `docs/reports/2026-10-19-threads-only.md`。
+GitHubの信頼済み定型指示をMacで受信し、下書き制作・確認待ち管理・実測・分析・GitHub報告を実行する基盤が動いています。**現在はThreadsの文章投稿だけが対象です。動画制作・Instagram/YouTube投稿を再開しないでください。** Threads文章用公開APIは実装・模擬検証済みですが、投稿権限の追加は本人承認済みで、アプリ画面の準備も完了しました。投稿用認証の保存・API照合と初回本文/日時の確認は未完了のため無効です。動作モードは `draft_only`、新規SNS公開は0件です。最新情報は `docs/reports/2026-10-19-threads-only.md`。
 
 このチャットでは実用ヒントを最初のテーマに指定。その後GitHub側から届いた「頑張らないで稼ぐ女性」と本人背景の方針も参考にし、価値観・経歴・AI実用の3案を準備しました。親しみのある短い問いかけと具体的な手順を仮方針とし、本人の経験や成果を創作しません。視聴者属性は未取得です。投稿頻度/時刻、避けたい内容、現行導線、本人素材と声・顔の利用範囲は未確定です。最初の原稿は `content/drafts/2026-10-19-first-batch/` に保存済みです。内容と制作記録は `docs/reports/2026-10-19-first-drafts.md` を参照してください。
 
@@ -23,7 +23,7 @@ GitHubの信頼済み定型指示をMacで受信し、下書き制作・確認�
 
 認証情報はMacのKeychainだけに保存しています。InstagramはGraph API v26.0、Threadsはv1.0の実接続です。テスター検索候補の内部IDはAPI IDへ流用していません。権限一覧APIはInstagramがHTTP 400、ThreadsがHTTP 500で未取得。UIの読取2権限準備と実際の読み取り成功とは分けて記録しています。Metaトークンの実期限と更新自動化は未確認/未実装です。
 
-専用Metaアプリは本人が作成した `Moco SNS Automation`、アプリID1150847227441767、InstagramクライアントID2011482642896301、ThreadsクライアントID1774625623767445。読取はInstagram `instagram_business_basic` / `instagram_business_manage_insights`、Threads `threads_basic` / `threads_manage_insights` の本人承認範囲です。投稿権限 `threads_content_publish` の追加は本人確認待ちです。返信・DM権限は追加しません。投稿用トークンは既存読取キーと別の `threads_publish` に新規保存する実装で、まだ保存していません。
+専用Metaアプリは本人が作成した `Moco SNS Automation`、アプリID1150847227441767、InstagramクライアントID2011482642896301、ThreadsクライアントID1774625623767445。読取はInstagram `instagram_business_basic` / `instagram_business_manage_insights`、Threads `threads_basic` / `threads_manage_insights` の本人承認範囲です。投稿権限 `threads_content_publish` は本人が追加を承認し、専用アプリ画面で「テスト準備完了」を確認しました。本人トークンの更新・保存は待機中です。返信・DM権限は追加しません。投稿用トークンは既存読取キーと別の `threads_publish` に新規保存する実装で、まだ保存していません。
 
 Annaの既存アプリ・認証情報は変更していません。**本人はChromeのAnnaログイン保持を希望しています。Chromeでログアウト/切り替えをしないでください。** Threadsは本人がSafariで認証し、Macの非表示フォームへコピーして保存しました。Safariのログインは本人申告、API IDとInsightsはMacから実照合済みです。CAPTCHAの迂回やFacebookパスワード再設定は行っていません。保存済みパスワードの確認は本人だけが行い、ツールで一覧・値を読まないでください。
 
@@ -60,10 +60,12 @@ Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。自動�
 
 Documentsへのバックグラウンドアクセス制限を避けるため、レビュー済みコードの固定コピーで実行しています。コード変更はMacで差分確認・必要なテスト後、`python3 scripts/install_runtime.py --github` で配置します。無条件のgit pullや公開リポジトリ用self-hosted runnerを追加しません。OS保護設定は変更していません。元データは無視対象 `work/` に保全しています。
 
+現在の追加権限と投稿用認証の進捗：[Threads投稿接続](reports/2026-10-19-threads-publish-connection.md)。権限追加の承認を、初回公開の承認へ読み替えないでください。
+
 ## 次に進める作業
 
 1. Threadsの初回本文・投稿先・公開タイミングを本人が確認する。本文は最新のThreads専用報告に掲載済み。
-2. 専用アプリへ投稿権限1つを追加する本人確認、Safariでの再認証、Macの `secret-import threads_publish` への保存、本人ID照合を行う。既存読取認証は上書きしない。
-3. 本人承認後にだけモード `threads_text` と `publishing.threads.enabled` / `permission_owner_approved` をMacで有効化する。`approve-threads` で本文・数値ID・時刻を固定し、初回は明示的な `publish-threads` で公開する。GitHub経由の承認は追加していない。
+2. 投稿権限1つの追加承認と専用アプリの準備は完了。Safariでの再認証、Macの `secret-import threads_publish` への保存、本人ID照合を行う。既存読取認証は上書きしない。
+3. 本文・投稿先・公開タイミングの本人承認後にだけモード `threads_text` と `publishing.threads.enabled` / `permission_owner_approved` をMacで有効化する。`approve-threads` で本文・数値ID・時刻を固定し、初回は明示的な `publish-threads` で公開する。GitHub経由の承認は追加していない。
 4. ID・URL・本文・投稿所有の照合と実測を確認する。自動予約は初回成功と本人の運用時刻確認後にだけ有効化する。POST応答不明は照合待ちで止め、再送しない。
 5. Threadsのトークン更新・専用自動結果報告・異常通知を追加する。他媒体と動画の作業は休止を維持する。
