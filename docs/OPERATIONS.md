@@ -15,6 +15,20 @@ python3 scripts/configure_github.py
 認証後の保存先はKeychainを利用します。秘密値をコマンド引数・チャットへ貼らないでください。
 リポジトリ所有者、または招待を承諾した本人の共同作業アカウントで認証します。`configure_github.py` は指定リポジトリへの書き込み権限を検証してから、認証した本人の数値IDをローカルに登録します。他の協力者を追加する場合も本人確認を行います。
 
+### 認証が期限切れになったとき
+
+古い `/login/device/authorize` が404になり、CLIに `expired_token` が表示された場合は、新しい認証を開始します。招待の承諾はやり直しません。
+
+```sh
+python3 scripts/login_github.py
+```
+
+この補助スクリプトは公式CLIを使い、一時コードをMacのクリップボードへコピーします。コードやCLIの生出力はログへ出さず、認証トークンは公式CLIの保管処理へ任せます。
+`code_copied_to_mac_clipboard` が出たらChromeで https://github.com/login/device を開き、招待を承諾したアカウントを選択します。左端のコード欄に⌘Vで貼り付け、Continue、Authorizeへ進みます。
+補助スクリプトの `authorized` と `python3 -m moco github-check` の成功を確認して完了とします。
+ブラウザの過去の成功画面だけでは、現在Macで待っている認証の完了とは判断しません。
+最後の許可操作は本人が行います。コードは期限付きで、終了時にはクリップボードがこのコードのままなら消去します。
+
 GitHub CLIでラベルを作成し、常駐処理をGitHub受信モードで登録します。
 
 ```sh
