@@ -188,7 +188,9 @@
       "threads_basic",
       "threads_manage_insights"
     ],
-    "threads_tester_invitation_completion_verified": false
+    "threads_tester_invitation_completion_verified": true,
+    "threads_tester_invitation_accepted_by_owner": true,
+    "threads_tester_pending_removed_in_meta_ui": true
   },
   "token_import": {
     "implemented": true,
@@ -240,7 +242,7 @@
     "new_sns_posts_created": 0
   },
   "threads_connection": {
-    "status": "owner_security_check_repeats_in_app_browser_safari_login_pending",
+    "status": "tester_accepted_safari_token_generation_and_keychain_save_pending",
     "owner_wants_chrome_anna_login_preserved": true,
     "chrome_anna_logged_out": false,
     "public_post_texts_observed": 4,
@@ -255,6 +257,11 @@
     "security_checks_bypassed": false,
     "safari_owner_login_requested": true,
     "safari_owner_login_verified": false,
-    "existing_instagram_api_reauthentication_required": false
+    "existing_instagram_api_reauthentication_required": false,
+    "safari_owner_login_reported_complete": true,
+    "safari_owner_login_verified_by_agent": false,
+    "standard_generator_in_chrome_failed": true,
+    "standard_generator_error_code": 1349245,
+    "token_intake_ready": true
   }
 }
