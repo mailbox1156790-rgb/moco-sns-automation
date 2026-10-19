@@ -1,7 +1,7 @@
 {
   "date_jst": "2026-10-19",
   "mode": "draft_only",
-  "unit_tests_passed": 42,
+  "unit_tests_passed": 50,
   "render": {
     "id": "moco-7db4788a583f4b6f",
     "width": 1080,
@@ -27,7 +27,11 @@
       "instagram": false,
       "threads": false
     },
-    "youtube_channel_id": "UCjcZcz7chD2o6hu4ZUZSA8Q"
+    "youtube_channel_id": "UCjcZcz7chD2o6hu4ZUZSA8Q",
+    "instagram_owner_confirmed": true,
+    "instagram_professional_account_confirmed": true,
+    "instagram_account_type": "professional",
+    "instagram_creator_or_business_subtype": null
   },
   "github": {
     "repository": "mailbox1156790-rgb/moco-sns-automation",
@@ -70,10 +74,28 @@
         "commands_total": 2,
         "public": false
       }
+    },
+    "metrics_reporting": {
+      "issue_number": 3,
+      "issue_id": 5922764913,
+      "url": "https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3#issuecomment-6265853054",
+      "comment_id": 6265853054,
+      "comment_created_at": "2026-10-19T11:11:40Z",
+      "matching_comment_count": 1,
+      "background_worker_checked_at": "2026-10-19T11:11:41.295916+00:00",
+      "worker_result": {
+        "status": "reported",
+        "comment_id": 6265853054,
+        "public": false
+      },
+      "repeat_call_status": "reported",
+      "outbox_status": "reported",
+      "public_measurements_count": 3,
+      "sns_posts_created": 0
     }
   },
   "deployment": {
-    "source_sha256": "fe52ef077db3b3f9ad63458275faefc6a82c060f1ea568f71937c9db1572ed16",
+    "source_sha256": "677ce47ac50b44ea2b4948fc32e2adaafa86e9234124a519521a0fd45d6899ae",
     "github_polling": true,
     "interval_seconds": 120
   },
@@ -102,5 +124,17 @@
       "next_due_at": "2026-10-19T16:47:48.277750+00:00"
     }
   },
-  "existing_public_posts_imported": 3
+  "existing_public_posts_imported": 3,
+  "meta_connection": {
+    "status": "human_verification_widget_not_displayed",
+    "instagram_owner_login_verified": true,
+    "professional_dashboard_visible": true,
+    "email_verification_owner_reported_complete": true,
+    "next_button_enabled": false,
+    "reload_attempts": 1,
+    "cause_confirmed": false,
+    "api_authentication_complete": false,
+    "instagram_account_id": null,
+    "threads_account_id": null
+  }
 }

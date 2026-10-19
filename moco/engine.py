@@ -4,6 +4,7 @@ import json
 from .core import SafeError, UTC, atomic_json, canonical, make_draft, now
 from .media import render
 from .collection import refresh_metrics
+from .reporting import report_metrics_checkpoint
 
 
 def analysis(store):
@@ -49,6 +50,7 @@ def tick(store, cfg, github=False, client=None):
         collection = refresh_metrics(store, cfg)
         if collection.get("updated_posts", 0):
             analysis(store)
+        metrics_report = report_metrics_checkpoint(store, cfg) if github else None
         if not store.stopped:
             due = store.db.execute("SELECT * FROM posts WHERE state='scheduled' AND scheduled_at<=?", (now(),)).fetchall()
             for row in due:
@@ -71,7 +73,7 @@ def tick(store, cfg, github=False, client=None):
                     break
                 render_with_retry(store, cfg, row["id"])
             store.db.commit()
-        result = {"checked_at": now(), "mode": cfg["mode"], "stopped": store.stopped, "posts": store.summary(), "github": remote, "collection": collection, "public": False}
+        result = {"checked_at": now(), "mode": cfg["mode"], "stopped": store.stopped, "posts": store.summary(), "github": remote, "collection": collection, "github_metrics_report": metrics_report, "public": False}
         atomic_json(store.var / "reports/status.json", result)
         return result
 

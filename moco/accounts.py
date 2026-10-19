@@ -72,11 +72,13 @@ class AccountAPI:
         identity = self.identity()
         if not self.account.get("owner_confirmed") or str(self.account.get("account_id")) != str(identity["account_id"]):
             raise SafeError("owner_confirmed_pinned_account_required")
+        visibility = None
         if self.platform == "youtube":
             rows = self.get("/videos", {"part": "id,snippet,statistics,status", "id": remote_id}).get("items", [])
             if len(rows) != 1 or rows[0]["snippet"]["channelId"] != identity["account_id"]:
                 raise SafeError("remote_video_ownership_not_verified")
             values = rows[0].get("statistics", {})
+            visibility = rows[0].get("status", {}).get("privacyStatus")
             result = {"views": number(values.get("viewCount")), "likes": number(values.get("likeCount")),
                       "comments": number(values.get("commentCount")), "reach": None, "watch_time_minutes": None}
             url = "https://www.youtube.com/shorts/" + remote_id
@@ -115,7 +117,8 @@ class AccountAPI:
             source = self.platform + "_api.insights"
         return {"platform": self.platform, "account_id": identity["account_id"], "remote_id": remote_id,
                 "remote_url": url, "collected_at": now(), "source": source, "metrics": result,
-                "missing_metrics": [k for k, v in result.items() if v is None]}
+                "missing_metrics": [k for k, v in result.items() if v is None],
+                "visibility": visibility}
 
 
 def number(value):

@@ -83,7 +83,7 @@ Mac側が `oauth_authorization_timed_out` なら新しい認証を開始しま�
 
 ## 4. Instagram / Threads
 
-Instagramアプリでプロフィール→メニュー→アカウントの種類とツール等を確認し、Business/Creatorアカウントであるか確認してください。画面名称は版で異なることがあります。
+このMacではInstagramの本人ログインとプロフェッショナルダッシュボードを確認済みです。Creator/Businessの内訳は未確認です。Metaのメール確認後の人間確認画面で認証欄が表示されず、API同意へ進めていません。人間確認は本人が公式画面で行います。コードや画面の認証URLをGitHubへ貼らないでください。
 Threadsはプロフィール→共有→リンクをコピーでURLを確認します。
 Meta Developer側のアプリ作成・本人ログイン・同意・必要な審査は本人操作です。現在は自動化していません。
 必要な読取権限・API版を公式画面で確認後、トークンをMacの非表示入力からKeychainへ保存します。
@@ -115,6 +115,14 @@ APIで投稿の所有を照合してから、投稿ID・URL・取得時刻・指
 このMacでは確認済みYouTubeの登録済み投稿だけを6時間ごとに更新し、分析JSONも更新します。基本設定の `metrics_collection.enabled` はfalseで、Macの `config/local.json` でYouTubeだけtrueにしています。
 `interval_seconds: 21600`、`max_posts_per_run: 20`。対象は既に所有照合された `published` の投稿IDです。
 結果は `var/reports/metrics-collection.json`。取得失敗時は失敗を記録して次の周期を待ちます。停止中は実測の外部APIへ接続しません。
+
+### GitHubへの実測自動報告
+
+完了した取得周期ごとに、固定した報告用Issueへ1件追記します。このMacの宛先は[Issue #3](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3)です。基本設定では無効で、秘密値を含まない `github.metrics_report_issue: {"number": 3, "id": 5922764913}` をMacの個別設定に置きます。
+リポジトリ・Issue数値ID・作者の信頼を照合します。対象は公開状態と本人チャンネルを確認したYouTube動画の再生・高評価・コメント数のみ。非公開/限定公開動画や詳細Insights、認証情報、任意のAPIフィールドを送りません。
+
+送信記録は `var/reports/github-metrics-outbox.json`。送信前にpayloadを固定し、再実行時は保存したコメントIDを使います。送信結果が不明な場合はGETで同じマーカーを照合し、確認できなければ `verification_required` で止めます。自動POST再試行はしません。手動で送信記録を削除する前に、GitHubのコメントを照合してください。停止中はこの実測報告も送信しません。
+`status.json` の `github_metrics_report` で結果を確認できます。`public: false` はSNSへの新規公開がないことを表します。GitHubの報告コメントは指定リポジトリの閲覧範囲へ共有されます。
 
 ## 6. 停止・バックアップ
 

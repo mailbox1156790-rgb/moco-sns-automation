@@ -42,8 +42,15 @@
     "instagram": {
       "profile_url": "https://www.instagram.com/mocochan85/",
       "account_id": null,
-      "owner_confirmed": false,
-      "api_version": null
+      "owner_confirmed": true,
+      "api_version": null,
+      "professional_account_confirmed": true,
+      "account_type": "professional",
+      "owner_confirmation": {
+        "method": "owner_login_statement_and_edit_profile_ui",
+        "date_jst": "2026-10-19"
+      },
+      "account_type_evidence": "professional_dashboard_visible_on_owner_profile"
     },
     "threads": {
       "profile_url": "https://www.threads.com/@mocochan85",

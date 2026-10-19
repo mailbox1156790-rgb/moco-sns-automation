@@ -13,7 +13,7 @@ Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも
 YouTubeは本人所有の `https://www.youtube.com/@MOCOchannel/shorts`。読み取りOAuth後にチャンネルID `UCjcZcz7chD2o6hu4ZUZSA8Q` の一致も確認済みです。
 
 Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
-自動テスト42件成功。YouTubeの公開済みShorts 3本で公式APIの実測を取得し、常駐処理での更新も成功しました。新規公開は0件です。
+自動テスト50件成功。YouTubeの公開済みShorts 3本で公式APIの実測を取得し、常駐処理での更新も成功しました。新規公開は0件です。
 本人のGitHub認証とpush/Issue権限を確認し、ソースと報告をmainへpush済みです。
 [実Issue #1](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1)をMacで処理し、[実返信](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109)とローカル実行記録を照合済みです。
 Mac常駐処理が[実Issue #2](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2)を自動受信し、実測0件の分析結果を返信したことも確認しました（手動tickなし）。120秒間隔で受信します。
@@ -43,13 +43,13 @@ GitHubからコードを自動更新しません。Macで差分を確認・テ�
 
 YouTubeの最初の認証はMacの5分タイムアウトで終了しました。待受を60分へ修正し、再認証・Keychain保存・実API照合まで完了しました。最新結果は `docs/reports/2026-10-19-youtube-connection.md` と実測JSONを参照してください。古い認証URLは再利用しません。
 
-このMacだけのローカル設定で、登録済みYouTube投稿を6時間ごとに再取得します。`metrics_collection.enabled` の基本設定はfalseです。Metaなど未接続媒体を勝手に有効化しないでください。毎回の実測スナップショットをGitHubへ自動追記する機能は次段階です。
+このMacだけのローカル設定で、登録済みYouTube投稿を6時間ごとに再取得します。`metrics_collection.enabled` の基本設定はfalseです。Metaなど未接続媒体を勝手に有効化しないでください。完了した取得周期の結果と最新の公開YouTube実測値を、固定した[報告用Issue #3](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/3)へ自動追記します。常駐での実返信・コメントID・再実行時の重複防止を確認済みです。詳細は `docs/reports/2026-10-19-instagram-status.md` を参照してください。
 
 ## 次の優先事項
 
 1. 優先テーマ・投稿頻度/時刻の本人確認。YouTube所有は本人確認済み、Threads URLも受領済み。
 2. クラウド側で定型Issueを作成する場合、作者がMacで信頼設定済みかを確認。別の作者なら本人に確認してから追加。
-3. YouTubeの読取OAuth・ID固定・3本の実測照合は完了。Instagram/ThreadsのMeta接続を進める。Instagram種別は本人も不明と回答。Chromeでは対象アカウントの本人ログインが必要。
+3. YouTubeの読取OAuth・ID固定・3本の実測照合は完了。Instagram/ThreadsのMeta接続を進める。Instagramは本人ログインと自分の編集画面・プロフェッショナルダッシュボードを確認済みです。Professionalは確認でき、Creator/Businessの内訳は未確認です。Metaはメール認証後の人間確認画面に画像/チェック欄が表示されず、「次へ」が無効です。1回の再読み込みでも改善せず、API認証・ID照合は未完了です。認証完了と扱ったり、制限を回避したりしないでください。
 4. 詳細Analytics、Metaトークン更新、公開アダプタを段階導入。公開前に本人確認。
 
 未確定のMeta権限名・Graph API版・利用上限を断定しないでください。developerサイトの一部はこの調査で取得できず、公式Meta Postmanコレクションを参照しています。

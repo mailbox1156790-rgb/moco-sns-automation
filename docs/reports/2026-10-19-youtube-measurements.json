@@ -5,7 +5,7 @@
   "observations": [
     {
       "account_id": "UCjcZcz7chD2o6hu4ZUZSA8Q",
-      "collected_at": "2026-10-19T10:49:59.716953+00:00",
+      "collected_at": "2026-10-19T11:11:31.600978+00:00",
       "metrics": {
         "comments": 0,
         "likes": 7,
@@ -20,11 +20,12 @@
       "platform": "youtube",
       "remote_id": "yMQsYOj3RP4",
       "remote_url": "https://www.youtube.com/shorts/yMQsYOj3RP4",
-      "source": "youtube_data_api.videos.list"
+      "source": "youtube_data_api.videos.list",
+      "visibility": "public"
     },
     {
       "account_id": "UCjcZcz7chD2o6hu4ZUZSA8Q",
-      "collected_at": "2026-10-19T10:50:00.027318+00:00",
+      "collected_at": "2026-10-19T11:11:32.061377+00:00",
       "metrics": {
         "comments": 0,
         "likes": 6,
@@ -39,11 +40,12 @@
       "platform": "youtube",
       "remote_id": "8zPGBs_XNoc",
       "remote_url": "https://www.youtube.com/shorts/8zPGBs_XNoc",
-      "source": "youtube_data_api.videos.list"
+      "source": "youtube_data_api.videos.list",
+      "visibility": "public"
     },
     {
       "account_id": "UCjcZcz7chD2o6hu4ZUZSA8Q",
-      "collected_at": "2026-10-19T10:50:00.319265+00:00",
+      "collected_at": "2026-10-19T11:11:32.510144+00:00",
       "metrics": {
         "comments": 0,
         "likes": 9,
@@ -58,7 +60,8 @@
       "platform": "youtube",
       "remote_id": "QgNc3Gyotts",
       "remote_url": "https://www.youtube.com/shorts/QgNc3Gyotts",
-      "source": "youtube_data_api.videos.list"
+      "source": "youtube_data_api.videos.list",
+      "visibility": "public"
     }
   ],
   "missing": [
