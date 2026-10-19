@@ -110,6 +110,12 @@ python3 -m moco analyze
 APIで投稿の所有を照合してから、投稿ID・URL・取得時刻・指標の実値を保存します。APIで未対応/未取得は `null`。YouTube詳細分析や人口統計はまだ取り込みません。
 公開画面の参考数値、拡張機能の推計値、テストの架空データはこの集計に混ぜません。
 
+### 実測値の定期更新
+
+このMacでは確認済みYouTubeの登録済み投稿だけを6時間ごとに更新し、分析JSONも更新します。基本設定の `metrics_collection.enabled` はfalseで、Macの `config/local.json` でYouTubeだけtrueにしています。
+`interval_seconds: 21600`、`max_posts_per_run: 20`。対象は既に所有照合された `published` の投稿IDです。
+結果は `var/reports/metrics-collection.json`。取得失敗時は失敗を記録して次の周期を待ちます。停止中は実測の外部APIへ接続しません。
+
 ## 6. 停止・バックアップ
 
 ```sh

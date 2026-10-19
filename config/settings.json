@@ -28,11 +28,15 @@
     "youtube": {
       "profile_url": "https://www.youtube.com/@MOCOchannel/shorts",
       "handle": "@MOCOchannel",
-      "account_id": null,
+      "account_id": "UCjcZcz7chD2o6hu4ZUZSA8Q",
       "owner_confirmed": true,
       "owner_confirmation": {
         "method": "owner_statement_in_chat",
         "date_jst": "2026-10-19"
+      },
+      "identity_verification": {
+        "method": "channels.list_mine_and_forHandle_id_match",
+        "checked_at": "2026-10-19T10:42:54.478403+00:00"
       }
     },
     "instagram": {
@@ -64,5 +68,13 @@
     "height": 1920,
     "fps": 30,
     "voice": "Kyoko"
+  },
+  "metrics_collection": {
+    "enabled": false,
+    "platforms": [
+      "youtube"
+    ],
+    "interval_seconds": 21600,
+    "max_posts_per_run": 20
   }
 }

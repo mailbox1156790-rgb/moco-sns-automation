@@ -10,10 +10,10 @@
 GitHubの指示を本人のMacで受け、制作→本人確認→予約/公開→実測→分析→改善→GitHub報告を段階導入します。
 現在は下書き専用。公開用APIは未実装です。初回の本人確認を省略しないでください。
 Instagramは本人指定の `https://www.instagram.com/mocochan85/`。Threadsも本人指定の `https://www.threads.com/@mocochan85` を受領し設定済み（共有パラメータは除去）。Threadsの本文・APIアカウント照合は未実施。
-YouTubeの指定は `https://www.youtube.com/@MOCOchannel/shorts`、公開ページでハンドルを確認済み。本人がこのチャットで所有を確認しました（2026-10-19）。OAuth接続先チャンネルIDの照合はまだです。
+YouTubeは本人所有の `https://www.youtube.com/@MOCOchannel/shorts`。読み取りOAuth後にチャンネルID `UCjcZcz7chD2o6hu4ZUZSA8Q` の一致も確認済みです。
 
 Python標準ライブラリ、SQLite、Swift/AppKit、FFmpegを使用。Macのローカルサンプルは管理ID `moco-7db4788a583f4b6f`、19.3秒・1080×1920・H.264/AAC・本人確認待ち。
-自動テスト35件成功。Macで画像/動画も確認しました。架空のSNS実績を作成していません。
+自動テスト42件成功。YouTubeの公開済みShorts 3本で公式APIの実測を取得し、常駐処理での更新も成功しました。新規公開は0件です。
 本人のGitHub認証とpush/Issue権限を確認し、ソースと報告をmainへpush済みです。
 [実Issue #1](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1)をMacで処理し、[実返信](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/1#issuecomment-6264852109)とローカル実行記録を照合済みです。
 Mac常駐処理が[実Issue #2](https://github.com/mailbox1156790-rgb/moco-sns-automation/issues/2)を自動受信し、実測0件の分析結果を返信したことも確認しました（手動tickなし）。120秒間隔で受信します。
@@ -41,13 +41,15 @@ Issueには `moco:command` ラベルと厳密なJSON本文が必要です。新�
 GitHubからコードを自動更新しません。Macで差分を確認・テストし、`python3 scripts/install_runtime.py --github` で新しい固定コピーを配置します。
 本人のOS保護設定は変更しません。Macのスリープ中には処理できない点を運用計画に含めてください。
 
-YouTube認証の最初の試行はMacの5分タイムアウトで終了しました。待受を60分へ延長し35件のテスト成功。本人所有の既存OAuthアプリで再接続する段階です。古いブラウザの戻り先URLを再利用しないでください。
+YouTubeの最初の認証はMacの5分タイムアウトで終了しました。待受を60分へ修正し、再認証・Keychain保存・実API照合まで完了しました。最新結果は `docs/reports/2026-10-19-youtube-connection.md` と実測JSONを参照してください。古い認証URLは再利用しません。
+
+このMacだけのローカル設定で、登録済みYouTube投稿を6時間ごとに再取得します。`metrics_collection.enabled` の基本設定はfalseです。Metaなど未接続媒体を勝手に有効化しないでください。毎回の実測スナップショットをGitHubへ自動追記する機能は次段階です。
 
 ## 次の優先事項
 
 1. 優先テーマ・投稿頻度/時刻の本人確認。YouTube所有は本人確認済み、Threads URLも受領済み。
 2. クラウド側で定型Issueを作成する場合、作者がMacで信頼設定済みかを確認。別の作者なら本人に確認してから追加。
-3. Google/Metaの読取OAuth→アカウントID固定→既存投稿ID/URL・実測照合。
+3. YouTubeの読取OAuth・ID固定・3本の実測照合は完了。Instagram/ThreadsのMeta接続を進める。Instagram種別は本人も不明と回答。Chromeでは対象アカウントの本人ログインが必要。
 4. 詳細Analytics、Metaトークン更新、公開アダプタを段階導入。公開前に本人確認。
 
 未確定のMeta権限名・Graph API版・利用上限を断定しないでください。developerサイトの一部はこの調査で取得できず、公式Meta Postmanコレクションを参照しています。

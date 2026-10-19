@@ -46,7 +46,9 @@ try:
     for p in files:
         target = release / p.relative_to(SOURCE)
         target.parent.mkdir(parents=True, exist_ok=True)
-        target.write_bytes(p.read_bytes())
+        # Preserve source times so unchanged Swift code keeps its existing helper.
+        # Rewriting its mtime on every deployment needlessly rebuilds the binary.
+        shutil.copy2(p, target)
     if source_var.resolve() != data.resolve():
         # Refuse to overwrite any previously installed data from a different checkout.
         if (data / "state.sqlite3").exists():

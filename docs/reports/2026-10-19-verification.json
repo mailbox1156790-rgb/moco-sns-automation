@@ -1,7 +1,7 @@
 {
   "date_jst": "2026-10-19",
   "mode": "draft_only",
-  "unit_tests_passed": 35,
+  "unit_tests_passed": 42,
   "render": {
     "id": "moco-7db4788a583f4b6f",
     "width": 1080,
@@ -18,11 +18,16 @@
     "threads_profile_url": "https://www.threads.com/@mocochan85",
     "youtube_profile_url": "https://www.youtube.com/@MOCOchannel/shorts",
     "youtube_owner_confirmed": true,
-    "sns_oauth_verified": false,
     "youtube_owner_confirmation": {
       "method": "owner_statement_in_chat",
       "date_jst": "2026-10-19"
-    }
+    },
+    "api_verification": {
+      "youtube": true,
+      "instagram": false,
+      "threads": false
+    },
+    "youtube_channel_id": "UCjcZcz7chD2o6hu4ZUZSA8Q"
   },
   "github": {
     "repository": "mailbox1156790-rgb/moco-sns-automation",
@@ -68,18 +73,34 @@
     }
   },
   "deployment": {
-    "source_sha256": "abbe381177e282e72fa754fd30dc5902768d7dd077e049758c41495874864620",
+    "source_sha256": "fe52ef077db3b3f9ad63458275faefc6a82c060f1ea568f71937c9db1572ed16",
     "github_polling": true,
     "interval_seconds": 120
   },
-  "measured_sns_metrics_samples": 0,
+  "measured_sns_metrics_samples": 3,
   "live_posting_implemented": false,
   "public_posts_created": 0,
   "youtube_oauth": {
-    "status": "retry_pending",
-    "last_failure": "local_receiver_timed_out",
+    "status": "connected",
+    "access": "read_only",
+    "channel_id_match": true,
+    "keychain_storage_verified": true,
     "callback_wait_seconds": 3600,
-    "app_ownership_confirmed": true,
-    "tokens_saved": false
-  }
+    "app_ownership_confirmed": true
+  },
+  "metrics_collection": {
+    "enabled_on_this_mac": true,
+    "interval_seconds": 21600,
+    "background_verified": true,
+    "last_result": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-19T10:47:48.277750+00:00",
+      "updated_posts": 3,
+      "failures": [],
+      "public": false,
+      "finished_at": "2026-10-19T10:50:00.320655+00:00",
+      "next_due_at": "2026-10-19T16:47:48.277750+00:00"
+    }
+  },
+  "existing_public_posts_imported": 3
 }
