@@ -129,7 +129,15 @@
     },
     "enabled_platforms_on_this_mac": [
       "threads"
-    ]
+    ],
+    "latest_checkpoint_observed_at": "2026-10-20T07:18:54.577213+00:00",
+    "latest_checkpoint": {
+      "status": "completed",
+      "last_attempt_at": "2026-10-20T04:50:22.941339+00:00",
+      "updated_posts": 3,
+      "finished_at": "2026-10-20T04:50:30.740480+00:00",
+      "next_due_at": "2026-10-20T10:50:22.941339+00:00"
+    }
   },
   "existing_public_posts_imported": 9,
   "meta_connection": {
@@ -239,7 +247,7 @@
     "missing_requested_metrics": [],
     "last_collected_at": "2026-10-19T12:09:46.848172+00:00",
     "private_insight_values_in_github": false,
-    "periodic_collection_enabled_on_this_mac": true,
+    "periodic_collection_enabled_on_this_mac": false,
     "background_metrics_collection_verified": false,
     "token_expiry_verified": false,
     "refresh_implemented": false,
@@ -385,7 +393,7 @@
     "implemented": true,
     "enabled": false,
     "owner_permission_addition_approved": true,
-    "publish_token_saved": false,
+    "publish_token_saved": true,
     "first_content_and_time_approved": false,
     "automatic_scheduling_enabled": false,
     "dedicated_keychain_account": "threads_publish",
@@ -397,7 +405,10 @@
     "legacy_credential_access_rejected_by_publish_helper": true,
     "existing_read_helper_preserved": true,
     "read_identity_reverified_after_helper_separation": true,
-    "official_permission_ui_ready": true
+    "official_permission_ui_ready": true,
+    "publish_identity_api_verified": true,
+    "publish_permission_api_verified": false,
+    "permissions_error_code": "http_status_500"
   },
   "previous_threads_draft": {
     "id": "moco-5ab9604cc71245a4",
@@ -454,7 +465,7 @@
     "repository_brief_treated_as_publication_approval": false
   },
   "threads_publish_connection": {
-    "status": "official_permission_ready_waiting_owner_safari_token_save",
+    "status": "keychain_saved_api_identity_verified_waiting_first_content_and_time_approval",
     "permission_addition_owner_approved": true,
     "app_id": "1150847227441767",
     "requested_permissions": [
@@ -463,10 +474,36 @@
       "threads_content_publish"
     ],
     "keychain_account": "threads_publish",
-    "keychain_saved": false,
-    "api_identity_verified": false,
+    "keychain_saved": true,
+    "api_identity_verified": true,
     "publish_permission_api_verified": false,
     "first_publication_approved": false,
-    "public_posts_created": 0
+    "public_posts_created": 0,
+    "account_id": "27052393934458790",
+    "username": "mocochan85",
+    "identity_checked_at": "2026-10-20T07:18:54.577213+00:00",
+    "permissions_api_verified": false,
+    "permissions_error_code": "http_status_500",
+    "official_api_post_verified": false,
+    "publishing_enabled": false,
+    "automatic_scheduling_enabled": false,
+    "token_expiry_verified": false,
+    "refresh_implemented": false,
+    "existing_read_credential_overwritten": false
+  },
+  "updated_date_jst": "2026-10-20",
+  "updated_at": "2026-10-20T07:18:54.577213+00:00",
+  "threads_publish_token_import": {
+    "completed": true,
+    "keychain_account": "threads_publish",
+    "replaced_existing": false,
+    "receiver_stopped_after_save": true,
+    "tokens_in_urls_files_or_logs": false
+  },
+  "threads_approval_state": {
+    "checked_date_jst": "2026-10-20",
+    "delivery_table_exists": false,
+    "approval_or_delivery_records": 0,
+    "owner_first_publication_approved": false
   }
 }
